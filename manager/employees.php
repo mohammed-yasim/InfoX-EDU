@@ -89,8 +89,8 @@
                             <td>
                             {employee.subjects.length > 0 ? 
                                 employee.subjects.map(subject=>{
-                                    return(
-                                        <span class="label label-success">{subject.u_code} - {subject.u_name}</span>
+                                    return(<div>
+                                        <span class="label label-success mx-1">{subject.u_code} - {subject.u_name}</span><br/></div>
                                     )
                                 })
                             :<span>Not allocated</span>}

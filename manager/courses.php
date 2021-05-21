@@ -60,7 +60,7 @@
             {course.u_code}
             <p>{course.u_desc}</p>
             {course.subjects.map(subject=>{
-                return(<span class="label label-info">{subject.u_name}</span>)
+                return(<span class="label label-info mx-1">{subject.u_name}</span>)
             })}
             </div>
           </div>
