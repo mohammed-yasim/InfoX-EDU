@@ -1,0 +1,1 @@
+<?php defined('INFOX') or die('No direct access allowed.');?>
