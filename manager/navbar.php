@@ -15,10 +15,13 @@
                 <ul class="treeview-menu" style="display: none;">
                     <li><a href="/courses"><i class="fa fa-link"></i> <span>courses</span></a></li>
                     <li><a href="/employees"><i class="fa fa-link"></i> <span>Employees</span></a></li>
+                    <li><a href="/subjects"><i class="fa fa-sticky-note"></i> <span>Subjects/Paper</span></a></li>
                     <li><a href="/clients"><i class="fa fa-link"></i> <span>Clients</span></a></li>
                     <li><a href="/users"><i class="fa fa-users"></i> <span>Users</span></a></li>
                 </ul>
             </li>
+            <li><a href="/content"><i class="fa fa-circle-o text-aqua"></i> <span>Content Manger</span></a></li>
+            <!----
             <li class="treeview" style="height: auto;">
                 <a href="#"><i class="fa fa-link"></i><span>Content</span>
                     <span class="pull-right-container">
@@ -26,7 +29,6 @@
                     </span>
                 </a>
                 <ul class="treeview-menu" style="display: none;">
-                    <li><a href="/subjects"><i class="fa fa-sticky-note"></i> <span>Subjects/Paper</span></a></li>
                     <li><a href="/assignments"><i class="fa fa-tasks"></i> <span>Assignments</span></a></li>
                     <li><a href="/exams"><i class="fa fa-pencil"></i> <span>Exams</span></a></li>
                     <li><a href="/topics"><i class="fa fa-users"></i> <span>Topics</span></a></li>
@@ -44,6 +46,7 @@
                     <li><a href="/videos"><i class="fa fa-video-camera"></i> <span>Videos</span></a></li>
                 </ul>
             </li>
+            ---->
         </ul>
         <script type="text/javascript">
             $(document).ready(() => {

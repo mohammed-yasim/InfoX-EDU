@@ -1,4 +1,4 @@
-<?php defined('INFOX') or die('No direct access allowed.');?>
+<?php defined('INFOX') or die('No direct access allowed.'); ?>
 <script>
     function isNumberKey(evt) {
         var charCode = (evt.which) ? evt.which : event.keyCode
@@ -6,11 +6,21 @@
             return false;
         return true;
     }
-    $(document).ajaxStart(function() { Pace.restart(); });
+    $(document).ajaxStart(function() {
+        Pace.restart();
+    });
     $(document).ready(function() {
+        var base_url = "<?php echo (INFOX_TOKEN); ?>";
         $.ajaxSetup({
             headers: {
                 'Authorization': '<?php echo (INFOX_TOKEN); ?>'
+            }
+        });
+        $.ajaxSetup({
+            beforeSend: function(xhr, options) {
+                if (options.url.indexOf('http') !== 0) {
+                    options.url = base_url + options.url;
+                }
             }
         });
         axios.defaults.baseURL = '<?php echo (INFOX_CONSOLE_URL); ?>';
