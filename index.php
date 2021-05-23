@@ -21,6 +21,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role
   if ($response['status'] == 1) {
     $_SESSION['_token'] = $response['data']['token'];
     $_SESSION['_role'] =  $_POST['role'];
+    $_SESSION['_name'] = $response['data']['user']['name'];
     if (isset($_POST['test']) && $_POST['test'] == '1') {
       $_SESSION['_test'] =  $_POST['role'];
     }

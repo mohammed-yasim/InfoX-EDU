@@ -41,33 +41,30 @@ window.yasi_quill_compute = function(){
         this.read_data = this.read_data.bind(this);
       }
     componentDidMount(){
-      var toolbarOptions = [
-  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-  ['blockquote', 'code-block'],
+    var toolbarOptions = [
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ 'font': [] }],
+      ['bold', 'italic', 'underline', 'strike'],// toggled buttons
+      [{ 'color': [] }, { 'background': [] }],// dropdown with defaults from theme
+      [{ 'align': [] }],
+      ['blockquote', 'code-block'],
+      //[{ 'header': 1 }, { 'header': 2 }],// custom button values
+    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+    [{ 'script': 'sub' }, { 'script': 'super' }],// superscript/subscript
+    [{ 'indent': '-1' }, { 'indent': '+1' }],// outdent/indent
+    [{ 'direction': 'rtl' }],// text direction
 
-  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-  [{ 'direction': 'rtl' }],                         // text direction
-
-  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-  [{ 'font': [] }],
-  [{ 'align': [] }],
-[ 'link', 'image', 'video', 'formula' ],
-  ['clean']                                         // remove formatting button
+    ['link', 'image', 'video', 'formula'],
+    ['clean'],// remove formatting button
+    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
 ];
-
     window.yasi_Delta = Quill.import('delta');
     window.yasi_quill = new Quill('#yasi_quill-editor-container', {
     modules: {
     toolbar: toolbarOptions
   },
   scrollingContainer: '#yasi_quill-scrolling-container', 
-  placeholder: 'Compose an epic...',
+  placeholder: 'Start writing Articles',
   theme: 'snow'
 });
 window.yasi_quill.on('text-change', function(delta) {

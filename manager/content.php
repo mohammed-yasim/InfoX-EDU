@@ -3,7 +3,7 @@
 <script type="text/babel">
   <?php include('common_react.php'); ?>
   
-  class ContentManager extends React.Component {
+class ContentManager extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -28,7 +28,11 @@
             input_course_select: '',
             data_subjects: [],
             input_subject_select: '',
-            data_content: []
+            data_content: [],
+            //EDITOR
+            editor_subject:'',
+            editor_method:''
+
 
         }
         this.load_data = this.load_data.bind(this);
@@ -38,6 +42,8 @@
         //EDITOR
         this.open_editor = this.open_editor.bind(this);
         this.close_editor = this.close_editor.bind(this);
+        this.editor_subject_handle = this.editor_subject_handle.bind(this);
+        this.editor_submit = this.editor_submit.bind(this);
     }
     CourseonChangeHandler(e) {
         this.setState({
@@ -82,25 +88,50 @@
     }
     open_editor = () => {
         this.setState({
-            content_editor: true
+            content_editor: true,
+            editor_method:'add'
         })
     }
     close_editor = () => {
         this.setState({
-            content_editor: false
+            content_editor: false,
+            editor_method:'',
+            editor_subject:'',
         })
     }
+    editor_subject_handle(e) {
+        this.setState({
+            editor_subject: e.target.value,
+        });
+    }
+    editor_submit = (e) => {
+        e.preventDefault();
+        //$('#employeeModal').hide();
+             var data = $('#editor_form').serializeObject();
+             axios.post('/contents?action='+this.state.editor_method+'-'+this.state.content_type,data).then((response)=>{
+                 const data_content = this.state.data_content;
+                 data_content.push(response.data)
+                 this.setState({
+                    data_content:data_content
+                 })
+                 $('#editor_form')[0].reset();
+               this.close_editor();
+                 alertify.success('Data Added');
+             }).catch((error)=>{
+               /// $('#employeeModal').show();
+             })
+    }
     componentDidMount() {
-        this.load_data();
+        this.load_data(this.state.editor_method);
     }
     render() {
         return (
             <div>
-                {this.state.content_editor === true ?
+                {this.state.content_editor === true && this.state.editor_method!== '' ?
                     <div>
                         <div className="box">
                             <div className="box-header with-border">
-                                <h3 className="box-title text-capitalize">Add new {this.state.content_type}</h3>
+                                <h3 className="box-title text-capitalize">{this.state.editor_method} {this.state.content_type}</h3>
 
                                 <div className="box-tools pull-right">
                                     <button type="button" className="btn btn-box-tool" onClick={() => {
@@ -110,65 +141,77 @@
                                 </div>
                             </div>
                             <div className="box-body">
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="form-group">
-                                            <label>Title</label>
-                                            <input className="form-control input-sm" placeholder="Example : Chapter 1 Introduction" />
-                                        </div>
-                                        <div className="form-group">
-                                            <label>Description</label>
-                                            <textarea className="form-control" rows="3" placeholder="Eg : Aim - Structure"></textarea>
-                                        </div>
 
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="form-group">
-                                            <div className="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked />
-                     Draft
-                    </label>
+                                {
+                                    this.state.data_subjects.length > 0 ?
+                                        <div className="col-xs-12 mb-10">
+                                                <select className="form-control" value={this.state.editor_subject} onChange={this.editor_subject_handle.bind(this)}>
+                                                    <option value={''} selelected>Choose Subject</option>
+                                                    {this.state.data_subjects.map(subject => {
+                                                        return (
+                                                            <option value={subject.u_id}>{subject.u_name}({subject.u_code})</option>
+                                                        )
+                                                    })}
+                                                </select>
+                                        </div> : null
+                                }
+
+                                <form id="editor_form" onSubmit={this.editor_submit}>
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <label>Title</label>
+                                                <input className="form-control input-sm" placeholder="Example : Chapter 1 Introduction" required name="title" />
                                             </div>
-                                            <div className="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
-                      Publish
-                    </label>
+                                            <div className="form-group">
+                                                <label>Description</label>
+                                                <textarea className="form-control" rows="3" placeholder="Eg : Aim - Structure" required name="desc"></textarea>
+                                            </div>
+                                            <div className="form-group">
+                                                <div className="radio">
+                                                    <label lassName="mx-1 text-bold">Status : </label>
+                                                    <label className="mx-1">
+                                                        <input type="radio" name="published" require value="0" checked />Draft</label>
+                                                    <label className="mx-1">
+                                                        <input type="radio" name="published" required value="1" />Publish</label>
+                                                </div>
+                                            </div>
+                                            <div className="form-group">
+                                                <div className="radio">
+                                                    <label lassName="mx-1 text-bold">After Publish Visibility : </label>
+                                                    <label className="mx-1">
+                                                        <input type="radio" name="visible" required value="0" checked />Yes </label>
+                                                    <label className="mx-1">
+                                                        <input type="radio" name="visible" value="1" required />No</label>
+                                                </div>
+
                                             </div>
                                         </div>
-                                        <div className="form-group">
-                                            <label>Published On</label>
-                                            <input type="datetime-local" className="form-control" defaultValue={() => { return new Date().toJSON().slice(0, 19) }} />
-                                        </div>
-                                        <div className="form-group">
-                                            <label>Visible Up To</label>
-                                            <input type="datetime-local" className="form-control" />
-                                        </div>
-                                        <div className="form-group">
-                                            <label>Visible in Classroom</label>
-                                            <div className="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked />
-                     No
-                    </label>
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <label>Published On</label>
+                                                <input type="datetime-local" className="form-control" required name="pub_date" />
                                             </div>
-                                            <div className="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
-                      Yes
-                    </label>
+                                            <div className="form-group">
+                                                <label>Visible Up To</label>
+                                                <input type="datetime-local" className="form-control" required name="exp_date" />
                                             </div>
 
+
+                                            <input className="form-control input-sm" readOnly placeholder="yasi_quill-file-blob-url" id="yasi_quill-file-blob-url" required name="blobdata" />
+                                            <input className="form-control input-sm" readOnly placeholder="course-id" required name="course_id" value={this.state.input_course_select} />
+                                            <input className="form-control input-sm" readOnly placeholder="subject-id" required name="subject_id" value={this.state.editor_subject} />
                                         </div>
-                                        <input className="form-control input-sm" readOnly placeholder="yasi_quill-file-blob-url" id="yasi_quill-file-blob-url"/>
                                     </div>
-                                </div>
+                                    <div className="col-xs-12">
+                                    <button className="btn btn-success text-capitalize" type="submit">{this.state.editor_method}</button>
+                                    </div>
+                                </form>
                             </div>
                             <div className="box-footer">
                             </div>
                         </div>
-                        <QuillEditor/>
+                        <QuillEditor />
                     </div>
                     : <div>
                         {this.state.content_loading === true ? <div className="col-xs-12 mt-10 mb-10 text-center"><div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div> :
@@ -222,7 +265,7 @@
                                         </div>
                                     }
                                     {
-                                        this.state.data_content.length > 0 ?
+                                        this.state.data_content.length > 0 && this.state.input_course_select !== '' ?
                                             <div className="box box-solid">
                                                 <div className="box-header with-border">
                                                     <h3 className="box-title">Filter</h3>
@@ -233,10 +276,10 @@
                                                 </div>
                                                 <div className="form-group">
                                                     <select className="form-control" value={this.state.input_subject_select}>
-                                                        <option value={''} selelected> Choose a Course</option>
-                                                        {this.state.data_courses.map(course => {
+                                                        <option value={''} selelected>All</option>
+                                                        {this.state.data_subjects.map(subject => {
                                                             return (
-                                                                <option value={course.u_id}>{course.u_name}({course.u_code})</option>
+                                                                <option value={subject.u_id}>{subject.u_name}({subject.u_code})</option>
                                                             )
                                                         })}
                                                     </select>
@@ -258,7 +301,8 @@
                                     <div className="col-md-9">
                                         <div className="box box-primary">
                                             <div className="box-header with-border">
-                                                <h3 className="box-title text-capitalize">{this.state.content_type}</h3>
+                            
+                                                <h3 className="box-title text-bold text-uppercase">{this.state.content_type}</h3>
 
                                                 <div className="box-tools pull-right">
                                                     <div className="has-feedback">
@@ -268,41 +312,47 @@
                                                 </div>
                                             </div>
                                             <div className="box-body no-padding">
-                                                <div className="mailbox-controls">
-
-                                                    <button type="button" className="btn btn-default btn-sm checkbox-toggle"><i className="fa fa-square-o"></i>
-                                                    </button>
-                                                    <button className="btn btn-sm btn-primary mx-1" onClick={() => {
-                                                        this.open_editor();
-                                                    }}><i className="fa fa-plus"></i></button>
-                                                    <div className="btn-group">
-                                                        <button type="button" className="btn btn-default btn-sm"><i className="fa fa-trash-o"></i></button>
-                                                        <button type="button" className="btn btn-default btn-sm"><i className="fa fa-reply"></i></button>
-                                                        <button type="button" className="btn btn-default btn-sm"><i className="fa fa-share"></i></button>
-                                                    </div>
-
-                                                    <button type="button" className="btn btn-default btn-sm"><i className="fa fa-refresh"></i></button>
-                                                    <div className="pull-right">
-                                                        1-50/200
-              <div className="btn-group">
-                                                            <button type="button" className="btn btn-default btn-sm"><i className="fa fa-chevron-left"></i></button>
-                                                            <button type="button" className="btn btn-default btn-sm"><i className="fa fa-chevron-right"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
+            
                                                 {this.state.data_content.length > 0 ?
                                                     <div className="table-responsive mailbox-messages">
                                                         <table className="table table-hover table-striped">
+                                                        <thead>
+                                                        <tr>
+                                                        <th></th>
+                                                        <th>Title &amp; Description</th>
+                                                        <th>Published</th>
+                                                        <th>Visible</th>
+                                                        <th>Actions</th>
+                                                        </tr>
+                                                        </thead>
                                                             <tbody>
+                                                            {this.state.data_content.map(data_set=>{
+                                                                return(
                                                                 <tr>
-                                                                    <td><input type="checkbox" /></td>
-                                                                    <td className="mailbox-star"><a><i className="fa fa-star text-yellow"></i></a></td>
-                                                                    <td className="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                                                    <td className="mailbox-subject"><b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                </td>
-                                                                    <td className="mailbox-attachment"></td>
-                                                                    <td className="mailbox-date">5 mins ago</td>
+                                                                <th>                                                               </th>
+                                                                <td>
+                                                                {data_set.u_title}<br/>
+                                                                {data_set.u_desc}</td>
+                                                                <td>
+                                                                {data_set.published===0?<label>DRAFT</label>:<span>{data_set.pub_date}</span>}
+                                                                </td>
+                                                                <td>
+                                                                {data_set.expiry===0?
+                                                                    <div>Visible</div>
+                                                                :<span>
+                                                                {data_set.exp_date}
+                                                                </span>}
+                                                                </td>
+                                                                <td>   
+                                                                <button className="btn btn-xs btn-info mx-1"><i className="fa fa-pencil"></i></button>
+                                                                <button className="btn btn-xs btn-danger mx-1"><i className="fa fa-trash"></i></button>
+                                                                {data_set.published===0?<button  className="btn btn-xs btn-success mx-1">Publish</button>:<button  className="btn btn-xs btn-warning mx-1">Un Publish</button>}
+                                                                   
+                                                                </td>
                                                                 </tr>
+                                                                )
+                                                            })
+                                                            }
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -310,44 +360,27 @@
                                                         <div className="error-content">
                                                             <h3><i className="fa fa-warning text-yellow"></i> No Data!</h3>
                                                             <p>
-
                                                             </p>
                                                         </div>
                                                     </div>}
                                             </div>
-                                            <div className="box-footer no-padding">
-                                                <div className="mailbox-controls">
-                                                    <button type="button" className="btn btn-default btn-sm checkbox-toggle"><i className="fa fa-square-o"></i>
-                                                    </button>
-                                                    <div className="btn-group">
-                                                        <button type="button" className="btn btn-default btn-sm"><i className="fa fa-trash-o"></i></button>
-                                                        <button type="button" className="btn btn-default btn-sm"><i className="fa fa-reply"></i></button>
-                                                        <button type="button" className="btn btn-default btn-sm"><i className="fa fa-share"></i></button>
-                                                    </div>
-
-                                                    <button type="button" className="btn btn-default btn-sm"><i className="fa fa-refresh"></i></button>
-                                                    <div className="pull-right">
-                                                        1-50/200
-              <div className="btn-group">
-                                                            <button type="button" className="btn btn-default btn-sm"><i className="fa fa-chevron-left"></i></button>
-                                                            <button type="button" className="btn btn-default btn-sm"><i className="fa fa-chevron-right"></i></button>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
+                                            <div className="box-footer no-padding text-center">
+                                            <div className="text-center mt-5 mb-5">
+                                            <button className="btn btn-xs btn-primary mx-1 text-capitalize" onClick={() => {
+                                                        this.open_editor();
+                                                    }}><i className="fa fa-plus"></i> Add New {this.state.content_type}</button>
+                                            </div>
                                             </div>
                                         </div>
-
                                     </div>
                                     : null}
                             </div>}
                     </div>}
-
             </div>)
     }
 }
 function App() {
+    //ContentManager
     return (
         <div>
             <section className="content-header">
@@ -359,6 +392,7 @@ function App() {
             <br />
             <section className="content container-fluid">
                 <ContentManager />
+
             </section>
         </div>
     )

@@ -33,11 +33,13 @@ axios.interceptors.response.use(function (response) {
     try {
         var err = error.response.data;
         if (error.response.status === 401) {
-            window.location.href = '/?logout'
+            alertify.alert('InfoX-EDU',`${err} ${error}`);
+            var r = confirm("Session/Authentication Failed! Do you want to reload");
+            if (r == true) {window.location.href = '/?logout'}
         }
     } catch (e) {
         var err = " - ";
     }
-    alertify.alert(`${err} ${error}`);
+    alertify.alert('InfoX-EDU',`${err} ${error}`);
     return Promise.reject(error);
 });
