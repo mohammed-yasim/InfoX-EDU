@@ -21,6 +21,8 @@
                 </ul>
             </li>
             <li><a href="/content"><i class="fa fa-circle-o text-aqua"></i> <span>Content Manger</span></a></li>
+            <li><a href="/content"><i class="fa fa-circle-o text-aqua"></i> <span>Content Manger</span></a></li>
+            <li class="header">Subscriptions</li>
             <!----
             <li class="treeview" style="height: auto;">
                 <a href="#"><i class="fa fa-link"></i><span>Content</span>

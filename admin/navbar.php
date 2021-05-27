@@ -3,38 +3,12 @@
 
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="/cdn/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-            </div>
-            <div class="pull-left info">
-                <p>InfoX-EDU User</p>
-                <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-        </div>
-
-        <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                    </button>
-                </span>
-            </div>
-        </form>
-        <!-- /.search form -->
-
-        <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
             <li><a href="/dashboard"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
             <li><a href="/institutions"><i class="fa fa-link"></i> <span>Institutions</span></a></li>
-            <li><a href="/managers"><i class="fa fa-link"></i> <span>Institutions Managers</span></a></li>
+            <li><a href="/managers"><i class="fa fa-link"></i> <span>Institutions Manager</span></a></li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
                     <span class="pull-right-container">
@@ -46,6 +20,9 @@
                     <li><a href="#">Link in level 2</a></li>
                 </ul>
             </li>
+            <li class="header">HEADER</li>
+            <li><a href="/dashboard"><i class="fa fa-link"></i> <span>Institutional Foundations</span></a></li>
+            <li><a href="/dashboard"><i class="fa fa-link"></i> <span>Shared Courses</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>

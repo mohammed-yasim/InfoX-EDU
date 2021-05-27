@@ -66,7 +66,7 @@
     return (
         <div>
             <section className="content-header">
-                <h1>Dashboard<small></small></h1>
+                <h1>Dashboard<small>-</small><?php echo($_SESSION['_institution']);?></h1>
                 <ol className="breadcrumb">
                     <li><a href="#" className="text-capitalize"><i className="fa fa-dashboard"></i></a>InfoX-EDU</li>
                     <li className="active">Dashboard</li>

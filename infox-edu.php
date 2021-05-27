@@ -41,6 +41,9 @@
             display: none;
             background-color: rosybrown;
         }
+        *:active,*:focus{
+            outline:none;
+        }
     </style>
     <style>
         .lds-spinner {

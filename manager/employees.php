@@ -127,10 +127,10 @@
 
                 <div className="form-group">
                 <div className="input-group">
-                <div className="input-group-btn">
-                  <button type="button" className="btn bg-maroon disabled">Institution_Prefix</button>
-                </div>
                 <input className="form-control" type="text" name="username" pattern="[A-Z0-9]*" required placeholder="Username <UPPERCASE-NUMBERS>"/>
+                <div className="input-group-btn">
+                  <button type="button" className="btn bg-maroon disabled">@Institution_PREFIX</button>
+                </div>
                 </div>
                 </div>
                 <div className="form-group">

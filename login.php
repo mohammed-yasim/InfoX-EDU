@@ -6,15 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>InfoX-EDU | Log in</title>
-    <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="/cdn/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="/cdn/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
     <link rel="stylesheet" href="/cdn/Ionicons/css/ionicons.min.css">
-    <!-- Theme style -->
     <link rel="stylesheet" href="/cdn/dist/css/AdminLTE.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -25,22 +20,32 @@
   <![endif]-->
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<style>
+.mybody{
+    background-color:#fff;
+  background-image:url('https://picsum.photos/1280/720');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.login-box{
+    position:fixed;
+    top:0;left:0;right:0;bottom:0;
+    margin:auto;
+    max-height:50vh;
+}
+</style>
 </head>
-
-<body class="hold-transition login-page">
+<body class="hold-transition login-page mybody" style="">
     <div class="login-box">
-        <div class="login-logo">
-            <a href="../../index2.html"><b>InfoX-EDU</b> 1.0</a>
-        </div>
-        <!-- /.login-logo -->
-        <div class="login-box-body">
-            <p class="login-box-msg">Sign in to start your session</p>
-            <p class="text-center text-danger"><?php if (isset($response['message'])) {
+        <div class="login-box-body" style="    box-shadow: 0 0px 10px rgba(0,0,0,0.30), 0 0px 10px rgba(0,0,0,0.22);">
+        <h3 class="text-center"><a><b>InfoX-EDU</b> 0.2</a></h3>
+            <p class="login-box-msg text-danger"><?php if (isset($response['message'])) {
                                                     echo $response['message'];
-                                                } ?></p>
+                                                }else{echo("Sign in to start your session");} ?></p>
             <form method="post">
                 <div class="form-group has-feedback">
-                    <select class="form-control" required name="role">
+                    <select class="form-control input-sm" required name="role">
                         <option value="" selected>Choose Role</option>
                         <option value="employee">Faculty / Staff / Teacher</option>
                         <option value="manager">Institutions / Managers</option>

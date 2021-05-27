@@ -22,6 +22,8 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role
     $_SESSION['_token'] = $response['data']['token'];
     $_SESSION['_role'] =  $_POST['role'];
     $_SESSION['_name'] = $response['data']['user']['name'];
+    $_SESSION['_name'] = $response['data']['user']['name'];
+    $_SESSION['_institution'] = $response['data']['user']['institution'];
     if (isset($_POST['test']) && $_POST['test'] == '1') {
       $_SESSION['_test'] =  $_POST['role'];
     }
@@ -42,7 +44,7 @@ if (isset($_SESSION["_token"])) {
   if (isset($_SESSION["_test"])) {
     define('INFOX_CONSOLE_URL', 'http://127.0.0.1:3001/' . INFOX_PATH);
   } else {
-    define('INFOX_CONSOLE_URL', 'https://console.nooneducare.in/' . $_SESSION['_role']);
+    define('INFOX_CONSOLE_URL', 'https://console.nooneducare.in/' . INFOX_PATH);
   }
   include('infox-edu.php');
 } else {
