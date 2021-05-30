@@ -83,7 +83,7 @@ class CourseManager extends React.Component {
                                 <div style={{display: 'flex',flexFlow: 'row wrap'}}>
                                 {course.subjects.map(subject => {
                                     if(subject.course_id !== course.u_id){
-                                    return (<span class="label label-danger mx-1 mt-5">{subject.u_name}</span>)
+                                    return (<span class="label label-danger mx-1 mt-5">{subject.u_name} - {subject.u_code}</span>)
                                     }else{
                                     return (<span class="label label-info mx-1 mt-5">{subject.u_name}</span>)
                                     }

@@ -42,7 +42,7 @@ if (isset($_SESSION["_token"])) {
   define('INFOX_TOKEN', $_SESSION['_token']);
   define('INFOX_PATH', $_SESSION['_role']);
   if (isset($_SESSION["_test"])) {
-    define('INFOX_CONSOLE_URL', 'http://127.0.0.1:3001/' . INFOX_PATH);
+    define('INFOX_CONSOLE_URL', 'http://192.168.43.199:3001/' . INFOX_PATH);
   } else {
     define('INFOX_CONSOLE_URL', 'https://console.nooneducare.in/' . INFOX_PATH);
   }

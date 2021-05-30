@@ -36,7 +36,7 @@
         axios.get('/subjects').then((response) => {
             this.setState({
                 data_courses: response.data.courses,
-                data_employees: response.data.employees
+                data_employees: response.data.employees,
                 data_basic_loaded: true,
 
             })

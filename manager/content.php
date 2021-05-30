@@ -27,13 +27,12 @@ class ContentManager extends React.Component {
             data_courses: [],
             input_course_select: '',
             data_subjects: [],
-            input_subject_select: '',
             data_content: [],
             //EDITOR
-            editor_subject:'',
-            editor_method:''
-
-
+            editor_subject: '',
+            editor_method: '',
+            //Filter
+            subject_filter:''
         }
         this.load_data = this.load_data.bind(this);
         this.CourseonChangeHandler = this.CourseonChangeHandler.bind(this);
@@ -44,14 +43,24 @@ class ContentManager extends React.Component {
         this.close_editor = this.close_editor.bind(this);
         this.editor_subject_handle = this.editor_subject_handle.bind(this);
         this.editor_submit = this.editor_submit.bind(this);
+        this.SubjectFilterHandler = this.SubjectFilterHandler.bind(this);
     }
     CourseonChangeHandler(e) {
         this.setState({
             input_course_select: e.target.value,
+            subject_filter : '',
             content_loading: true
         })
         this.fetch_data(e.target.value);
     }
+    
+    SubjectFilterHandler(e) {
+        this.setState({
+            subject_filter:e.target.value,
+            editor_subject:e.target.value
+        })
+    }
+    
     ContentonChangeHandler(content_type) {
         this.setState({
             content_type: content_type,
@@ -89,14 +98,14 @@ class ContentManager extends React.Component {
     open_editor = () => {
         this.setState({
             content_editor: true,
-            editor_method:'add'
+            editor_method: 'add'
         })
     }
     close_editor = () => {
         this.setState({
             content_editor: false,
-            editor_method:'',
-            editor_subject:'',
+            editor_method: '',
+            editor_subject: '',
         })
     }
     editor_subject_handle(e) {
@@ -107,19 +116,19 @@ class ContentManager extends React.Component {
     editor_submit = (e) => {
         e.preventDefault();
         //$('#employeeModal').hide();
-             var data = $('#editor_form').serializeObject();
-             axios.post('/contents?action='+this.state.editor_method+'-'+this.state.content_type,data).then((response)=>{
-                 const data_content = this.state.data_content;
-                 data_content.push(response.data)
-                 this.setState({
-                    data_content:data_content
-                 })
-                 $('#editor_form')[0].reset();
-               this.close_editor();
-                 alertify.success('Data Added');
-             }).catch((error)=>{
-               /// $('#employeeModal').show();
-             })
+        var data = $('#editor_form').serializeObject();
+        axios.post('/contents?action=' + this.state.editor_method + '-' + this.state.content_type, data).then((response) => {
+            const data_content = this.state.data_content;
+            data_content.push(response.data)
+            this.setState({
+                data_content: data_content
+            })
+            $('#editor_form')[0].reset();
+            this.close_editor();
+            alertify.success('Data Added');
+        }).catch((error) => {
+            /// $('#employeeModal').show();
+        })
     }
     componentDidMount() {
         this.load_data(this.state.editor_method);
@@ -127,7 +136,7 @@ class ContentManager extends React.Component {
     render() {
         return (
             <div>
-                {this.state.content_editor === true && this.state.editor_method!== '' ?
+                {this.state.content_editor === true && this.state.editor_method !== '' ?
                     <div>
                         <div className="box">
                             <div className="box-header with-border">
@@ -145,14 +154,14 @@ class ContentManager extends React.Component {
                                 {
                                     this.state.data_subjects.length > 0 ?
                                         <div className="col-xs-12 mb-10">
-                                                <select className="form-control" value={this.state.editor_subject} onChange={this.editor_subject_handle.bind(this)}>
-                                                    <option value={''} selelected>Choose Subject</option>
-                                                    {this.state.data_subjects.map(subject => {
-                                                        return (
-                                                            <option value={subject.u_id}>{subject.u_name}({subject.u_code})</option>
-                                                        )
-                                                    })}
-                                                </select>
+                                            <select className="form-control" value={this.state.editor_subject} onChange={this.editor_subject_handle.bind(this)}>
+                                                <option value={''} selelected>Choose Subject</option>
+                                                {this.state.data_subjects.map(subject => {
+                                                    return (
+                                                        <option value={subject.u_id}>{subject.u_name}({subject.u_code})</option>
+                                                    )
+                                                })}
+                                            </select>
                                         </div> : null
                                 }
 
@@ -204,7 +213,7 @@ class ContentManager extends React.Component {
                                         </div>
                                     </div>
                                     <div className="col-xs-12">
-                                    <button className="btn btn-success text-capitalize" type="submit">{this.state.editor_method}</button>
+                                        <button className="btn btn-success text-capitalize" type="submit">{this.state.editor_method}</button>
                                     </div>
                                 </form>
                             </div>
@@ -266,16 +275,19 @@ class ContentManager extends React.Component {
                                     }
                                     {
                                         this.state.data_content.length > 0 && this.state.input_course_select !== '' ?
+                                        <div>
                                             <div className="box box-solid">
                                                 <div className="box-header with-border">
-                                                    <h3 className="box-title">Filter</h3>
+                                                    <h3 className="box-title">Subject Filter</h3>
                                                     <div className="box-tools">
                                                         <button type="button" className="btn btn-box-tool" data-widget="collapse"><i className="fa fa-minus"></i>
                                                         </button>
                                                     </div>
                                                 </div>
+    
+                                                <div className="box-body no-padding">
                                                 <div className="form-group">
-                                                    <select className="form-control" value={this.state.input_subject_select}>
+                                                    <select className="form-control" value={this.state.subject_filter} onChange={this.SubjectFilterHandler.bind(this)}>
                                                         <option value={''} selelected>All</option>
                                                         {this.state.data_subjects.map(subject => {
                                                             return (
@@ -283,6 +295,18 @@ class ContentManager extends React.Component {
                                                             )
                                                         })}
                                                     </select>
+                                                </div>
+                                                
+                                                </div>
+
+                                            </div> 
+                                            <div className="box box-solid">
+                                                <div className="box-header with-border">
+                                                    <h3 className="box-title">Filter</h3>
+                                                    <div className="box-tools">
+                                                        <button type="button" className="btn btn-box-tool" data-widget="collapse"><i className="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                                 <div className="box-body no-padding">
                                                     <ul className="nav nav-pills nav-stacked">
@@ -293,7 +317,8 @@ class ContentManager extends React.Component {
                                                     </ul>
                                                 </div>
 
-                                            </div> : null
+                                            </div>
+                                            </div>: null
                                     }
 
                                 </div>
@@ -301,7 +326,7 @@ class ContentManager extends React.Component {
                                     <div className="col-md-9">
                                         <div className="box box-primary">
                                             <div className="box-header with-border">
-                            
+
                                                 <h3 className="box-title text-bold text-uppercase">{this.state.content_type}</h3>
 
                                                 <div className="box-tools pull-right">
@@ -312,47 +337,54 @@ class ContentManager extends React.Component {
                                                 </div>
                                             </div>
                                             <div className="box-body no-padding">
-            
+
                                                 {this.state.data_content.length > 0 ?
                                                     <div className="table-responsive mailbox-messages">
                                                         <table className="table table-hover table-striped">
-                                                        <thead>
-                                                        <tr>
-                                                        <th></th>
-                                                        <th>Title &amp; Description</th>
-                                                        <th>Published</th>
-                                                        <th>Visible</th>
-                                                        <th>Actions</th>
-                                                        </tr>
-                                                        </thead>
-                                                            <tbody>
-                                                            {this.state.data_content.map(data_set=>{
-                                                                return(
+                                                            <thead>
                                                                 <tr>
-                                                                <th>                                                               </th>
-                                                                <td>
-                                                                {data_set.u_title}<br/>
-                                                                {data_set.u_desc}</td>
-                                                                <td>
-                                                                {data_set.published===0?<label>DRAFT</label>:<span>{data_set.pub_date}</span>}
-                                                                </td>
-                                                                <td>
-                                                                {data_set.expiry===0?
-                                                                    <div>Visible</div>
-                                                                :<span>
-                                                                {data_set.exp_date}
-                                                                </span>}
-                                                                </td>
-                                                                <td>   
-                                                                <button className="btn btn-xs btn-info mx-1"><i className="fa fa-pencil"></i></button>
-                                                                <button className="btn btn-xs btn-danger mx-1"><i className="fa fa-trash"></i></button>
-                                                                {data_set.published===0?<button  className="btn btn-xs btn-success mx-1">Publish</button>:<button  className="btn btn-xs btn-warning mx-1">Un Publish</button>}
-                                                                   
-                                                                </td>
+                                                                    <th></th>
+                                                                    <th>Title &amp; Description</th>
+                                                                    <th>Status</th>
+
+                                                                    <th>Actions</th>
                                                                 </tr>
-                                                                )
-                                                            })
-                                                            }
+                                                            </thead>
+                                                            <tbody>
+                                                                {this.state.data_content.filter(
+                                                                    data_set => data_set.subject_id === this.state.subject_filter || !this.state.subject_filter
+                                                                ).map(data_set => {
+                                                                    return (
+                                                                        <tr>
+                                                                            <th></th>
+                                                                            <td>
+                                                                                {data_set.u_title}<br />
+                                                                                {data_set.u_desc}</td>
+                                                                            <td style={{ fontSize: '80%' }}>
+                                                                                <div>
+                                                                                    {data_set.published === 0 ? <label>DRAFT</label> : <span>
+                                                                                        {new Date(data_set.pub_date) > new Date() ? <span>
+                                                                                            Publish on : {new Date(data_set.pub_date).toString()}
+                                                                                        </span> : <span>Published :  {new Date(data_set.pub_date).toString()}</span>}
+                                                                                    </span>}
+                                                                                </div>
+                                                                                <div>
+                                                                                    {data_set.expiry === 0 ?
+                                                                                        <div>Visible</div>
+                                                                                        : <span>
+                                                                                            {new Date(data_set.exp_date).toString()}
+                                                                                        </span>}
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <button className="btn btn-xs btn-info mx-1"><i className="fa fa-pencil"></i></button>
+                                                                                <button className="btn btn-xs btn-danger mx-1"><i className="fa fa-trash"></i></button>
+                                                                                {data_set.published === 0 ? <button className="btn btn-xs btn-success mx-1">Publish</button> : <button className="btn btn-xs btn-warning mx-1">Un Publish</button>}
+                                                                            </td>
+                                                                        </tr>
+                                                                    )
+                                                                })
+                                                                }
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -365,11 +397,11 @@ class ContentManager extends React.Component {
                                                     </div>}
                                             </div>
                                             <div className="box-footer no-padding text-center">
-                                            <div className="text-center mt-5 mb-5">
-                                            <button className="btn btn-xs btn-primary mx-1 text-capitalize" onClick={() => {
+                                                <div className="text-center mt-5 mb-5">
+                                                    <button className="btn btn-xs btn-primary mx-1 text-capitalize" onClick={() => {
                                                         this.open_editor();
                                                     }}><i className="fa fa-plus"></i> Add New {this.state.content_type}</button>
-                                            </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
