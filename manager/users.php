@@ -28,11 +28,13 @@
         this.load_data();
     }
     onCourseChange = (e) => {
-        this.setState(
-            {
-                selected_course: e.target.value
-            }
-        )
+        let course_id = e.target.value;
+        axios.get(`/user?course=${course_id}`).then((response)=>{
+        this.setState({
+                selected_course: course_id,
+                user_temp_list: response.data,
+            })
+        });
     }
     render() {
         return (
@@ -53,21 +55,50 @@
                                 </select>
                                 {this.state.user_temp_list.length > 0 ?
                                     <div>
-                                        <table>
+                                        <table  class="table table-hover">
+                                        <thead>
+                            <tr>
+                                <th>SINo.</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <td> Actions</td>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Whatsapp No</th>
+                                <td>Settings</td>
+                            </tr>
+                        </thead>
                                             <tbody>
-                                                {this.state.user_temp_list.map((user) => {
+                                                {this.state.user_temp_list.map((user,id) => {
                                                     return (
-                                                        <tr>
-
-                                                        </tr>
-                                                    )
+                                        <tr>
+                                            <td>
+                                                <input type="text" className="form-control" required defaultValue={id} name="id" size={2} />
+                                            </td>
+                                            <td>
+                                                <input type="text" className="form-control" required defaultValue={user.username} name="adno" />
+                                            </td>
+                                            <td>
+                                                <input type="text" className="form-control" required defaultValue={user.password} name="adno" />
+                                            </td>
+                                            <td></td>
+                                            <td><input type="text" className="form-control" required defaultValue={user.u_name} name="name" />
+                                            </td>
+                                            <td><input type="text" className="form-control" required defaultValue={user.u_address} name="house" />
+                                            </td>
+                                            
+                                            <td><input type="text" className="form-control" required defaultValue={user.u_contact} name="contact" />
+                                            </td>
+                                            <td></td>
+                                           </tr>
+                                    )
                                                 })}
                                             </tbody>
                                         </table>
                                     </div>
                                     :
                                     <h2> No Users List</h2>}
-                                <UserImporter course={this.state.selected_course} />
+                                    {this.state.selected_course !== '' ? <div><UserImporter course={this.state.selected_course}/></div>:null}
                             </div> : <h2>Please Add Course First</h2>}
                     </div>
                     : null}
@@ -106,14 +137,29 @@ class UserImporter extends React.Component {
     saveImported = (e) => {
         e.preventDefault();
         let data = $("#imported_data").serializeObject();
-        axios.post(`/users?course=${this.props.course}`, data);
+        axios.post(`/users?course=${this.props.course}`, data).then((response)=>{
+            this.setState({
+            csv_list: []
+        });
+        alertify.success('Ok: ' + response.data);
+        $('#csv_ip').val('')
+        })
     }
     render() {
         return (
             <div>
-                <input onChange={this.onFileChange.bind(this)} type="file" />
+            <a href="/example_user_import.csv">Example</a>
+                <input id="csv_ip" onChange={this.onFileChange.bind(this)} type="file" />
+                {this.state.csv_list.length>0 ?
+                    <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Imported CSV</h3>
+            </div>
+            <div class="box-body table-responsive no-padding">
                 <form onSubmit={this.saveImported} id="imported_data">
-                    <table>
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>SINo.</th>
@@ -138,34 +184,34 @@ class UserImporter extends React.Component {
                                     return (
                                         <tr>
                                             <td>
-                                                <input type="text" className="form-control" required value={id} name="id" size={2} />
+                                                <input type="text" className="form-control" required defaultValue={id} name="id" size={2} />
                                             </td>
                                             <td>
-                                                <input type="text" className="form-control" required value={data[0]} name="adno" />
+                                                <input type="text" className="form-control" required defaultValue={data[0]} name="adno" />
                                             </td>
-                                            <td><input type="text" className="form-control" required value={data[1]} name="name" />
+                                            <td><input type="text" className="form-control" required defaultValue={data[1]} name="name" />
                                             </td>
-                                            <td><input type="text" className="form-control" required value={data[2]} name="house" />
+                                            <td><input type="text" className="form-control" required defaultValue={data[2]} name="house" />
                                             </td>
-                                             <td><input type="text" className="form-control" required value={data[3]} name="place" />
+                                             <td><input type="text" className="form-control" required defaultValue={data[3]} name="place" />
                                             </td>
-                                            <td><input type="text" className="form-control" required value={data[4]} name="contact" />
+                                            <td><input type="text" className="form-control" required defaultValue={data[4]} name="contact" />
                                             </td>
-                                            <td><input type="text" className="form-control" required value={data[5]} name="fname" />
+                                            <td><input type="text" className="form-control" required defaultValue={data[5]} name="fname" />
                                             </td>
-                                            <td><input type="text" className="form-control" required value={data[6]} name="fmob" />
+                                            <td><input type="text" className="form-control" required defaultValue={data[6]} name="fmob" />
                                             </td>
-                                            <td><input type="text" className="form-control" required value={data[7]} name="mname" />
+                                            <td><input type="text" className="form-control" required defaultValue={data[7]} name="mname" />
                                             </td>
-                                            <td><input type="text" className="form-control" required value={data[8]} name="mmob" />
+                                            <td><input type="text" className="form-control" required defaultValue={data[8]} name="mmob" />
                                             </td>
-                                            <td><input type="text" className="form-control" required value={data[9]} name="dob" />
+                                            <td><input type="text" className="form-control" required defaultValue={data[9]} name="dob" />
                                             </td>
-                                            <td><input type="text" className="form-control" required value={data[10]} name="gender" />
+                                            <td><input type="text" className="form-control" required defaultValue={data[10]} name="gender" />
                                             </td>
-                                            <td><input type="text" className="form-control" required value={data[11]} name="class" />
+                                            <td><input type="text" className="form-control" required defaultValue={data[11]} name="class" />
                                             </td>
-                                            <td><input type="text" className="form-control" required value={data[12]} name="div" />
+                                            <td><input type="text" className="form-control" required defaultValue={data[12]} name="div" />
                                             </td>
                                            </tr>
                                     )
@@ -173,8 +219,12 @@ class UserImporter extends React.Component {
                             })}
                         </tbody>
                     </table>
-                    <button tye="submit">Save</button>
+                    <button className="btn btn-success mx-30" tye="submit">Save</button>
                 </form>
+                </div>
+          </div>
+        </div>
+      </div>: null}
             </div>
         )
     }
