@@ -63,7 +63,6 @@ window.yasi_quill_compute = function(){
     modules: {
     toolbar: toolbarOptions
   },
-  scrollingContainer: '#yasi_quill-scrolling-container', 
   placeholder: 'Start writing Articles',
   theme: 'snow'
 });
@@ -109,8 +108,6 @@ read_data = () => {
     <div className="box-header with-border">
         <div className="row mb-10">
         <div className="col-md-6">
-        <button  className="btn btn-info mx-10 btn-xs"> <i className="fa fa-cloud-upload"></i> Media Library</button>
-
         <label class="label label-primary">File Size <span id="yasi_quill-filesize">0.00</span>KB</label>
         </div>
         <div className="col-md-6">
@@ -125,15 +122,24 @@ read_data = () => {
                           </div>
                           
     <div className="box-body">
-                          <div id="yasi_quill-scrolling-container">
-                            <div id="yasi_quill-editor-container">
-                            </div>
-                          </div>
+    <div id="yasi_quill-editor-container" style={{height:'60vh'}}>
+    </div>
     
     </div>
     <div className="box-footer">
     <button class="btn btn-sm label label-info mb-5 mx-1">Local Download</button>
     <button class="btn btm-sm label label-warning mb-5 mx-1">Local Upload</button>
+    <button  className="btn btn-info mx-10 mb-5 btn-xs"> <i className="fa fa-cloud-upload"></i> Media Library</button>
+    <button onClick={()=>{
+      var quill = window.yasi_quill;
+      var index = quill.getLength();
+      quill.insertEmbed(index, 'image', 'https://data.apkshub.com/60/com.whatsapp/2.20.194.8/icon.png');
+      quill.setSelection(index, index+1);
+      quill.theme.tooltip.edit('link', 'https://data.apkshub.com/60/com.whatsapp/2.20.194.8/icon.png');
+      quill.theme.tooltip.save();
+      
+      quill.format('align', 'center');
+    }} class="btn btn-xs btn-success  mb-5 mx-1"><i className="fa fa-whatsapp"></i> Insert Whatsapp</button>
     <div className="pull-right text-black text-xs">&copy; mohammed-yasim</div>
     </div>
   </div>

@@ -37,12 +37,11 @@
     <link rel="stylesheet" href="/cdn/plugins/pace/pace.min.css">
     <script src="/cdn/plugins/pace/pace.min.js"></script>
     <style>
-        body::-webkit-scrollbar {
-            display: none;
-            background-color: rosybrown;
-        }
         *:active,*:focus{
             outline:none;
+        }
+        .non-input{
+            pointer-events: none; 
         }
     </style>
     <style>
@@ -163,7 +162,7 @@ desired effect
 |---------------------------------------------------------|
 -->
 
-<body class="hold-transition skin-purple sidebar-mini fixed">
+<body class="hold-transition skin-purple fixed sidebar-collapse">
     <div class="wrapper">
         
         <header class="main-header">

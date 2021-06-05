@@ -163,14 +163,14 @@ class ContentManager extends React.Component {
                                                 })}
                                             </select>
                                         </div> : null
-                                }
+                                }   
 
                                 <form id="editor_form" onSubmit={this.editor_submit}>
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label>Title</label>
-                                                <input className="form-control input-sm" placeholder="Example : Chapter 1 Introduction" required name="title" />
+                                                <input type="text" className="form-control input-sm" placeholder="Example : Chapter 1 Introduction" required name="title" />
                                             </div>
                                             <div className="form-group">
                                                 <label>Description</label>
@@ -205,15 +205,13 @@ class ContentManager extends React.Component {
                                                 <label>Visible Up To</label>
                                                 <input type="datetime-local" className="form-control" required name="exp_date" />
                                             </div>
-
-
-                                            <input className="form-control input-sm" readOnly placeholder="yasi_quill-file-blob-url" id="yasi_quill-file-blob-url" required name="blobdata" />
-                                            <input className="form-control input-sm" readOnly placeholder="course-id" required name="course_id" value={this.state.input_course_select} />
-                                            <input className="form-control input-sm" readOnly placeholder="subject-id" required name="subject_id" value={this.state.editor_subject} />
+                                            <input type="text" className="form-control input-sm non-input"  placeholder="yasi_quill-file-blob-url" id="yasi_quill-file-blob-url" name="blobdata" required />
+                                            <input  type="text" className="form-control input-sm non-input" readOnly placeholder="course-id" required name="course_id" value={this.state.input_course_select} />
+                                            <input type="text"  className="form-control input-sm non-input" placeholder="subject-id" required name="subject_id" value={this.state.editor_subject} />
                                         </div>
                                     </div>
                                     <div className="col-xs-12">
-                                        <button className="btn btn-success text-capitalize" type="submit">{this.state.editor_method}</button>
+                                        <button className="btn btn-success text-capitalize" type="submit">{this.state.editor_method}</button>   
                                     </div>
                                 </form>
                             </div>
