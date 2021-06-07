@@ -1,5 +1,8 @@
-<?php defined('INFOX') or die('No direct access allowed.');?>
+<?php defined('INFOX') or die('No direct access allowed.'); ?>
+<link rel="stylesheet" href="/cdn/datatables/css/dataTables.bootstrap.min.css" />
 <script src="/cdn/papaparse.js"></script>
+<script src="/cdn/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/cdn/datatables/js/dataTables.bootstrap.min.js"></script>
 <script type="text/babel">
     <?php include('common_react.php'); ?>
     class UserManager extends React.Component {
@@ -29,11 +32,22 @@
     }
     onCourseChange = (e) => {
         let course_id = e.target.value;
+        if ($.fn.DataTable.isDataTable("#userslist_table")) {
+  $('#userslist_table').DataTable().destroy();
+}
         axios.get(`/user?course=${course_id}`).then((response)=>{
         this.setState({
                 selected_course: course_id,
                 user_temp_list: response.data,
-            })
+            });
+            $('#userslist_table').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : true
+    });
         });
     }
     render() {
@@ -54,8 +68,12 @@
                                     )}
                                 </select>
                                 {this.state.user_temp_list.length > 0 ?
-                                    <div>
-                                        <table  class="table table-hover">
+                                    <section className="content">
+      <div className="row">
+        <div className="col-xs-12">
+          <div className="box">
+            <div className="box-body">
+                                        <table id="userslist_table" className="table table-bordered table-hover">
                                         <thead>
                             <tr>
                                 <th>SINo.</th>
@@ -73,21 +91,21 @@
                                                     return (
                                         <tr>
                                             <td>
-                                                <input type="text" className="form-control" required defaultValue={id} name="id" size={2} />
+                                               {id}
                                             </td>
                                             <td>
-                                                <input type="text" className="form-control" required defaultValue={user.username} name="adno" />
+                                                {user.username}
                                             </td>
                                             <td>
-                                                <input type="text" className="form-control" required defaultValue={user.password} name="adno" />
+                                              {user.password}
                                             </td>
                                             <td></td>
-                                            <td><input type="text" className="form-control" required defaultValue={user.u_name} name="name" />
+                                            <td>{user.u_name}
                                             </td>
-                                            <td><input type="text" className="form-control" required defaultValue={user.u_address} name="house" />
+                                            <td>{user.u_address}
                                             </td>
                                             
-                                            <td><input type="text" className="form-control" required defaultValue={user.u_contact} name="contact" />
+                                            <td>{user.u_contact}
                                             </td>
                                             <td></td>
                                            </tr>
@@ -96,11 +114,17 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    </div>
+ 
+        </div>
+      </div>
+    </section>
                                     :
                                     <h2> No Users List</h2>}
                                     {this.state.selected_course !== '' ? <div><UserImporter course={this.state.selected_course}/></div>:null}
                             </div> : <h2>Please Add Course First</h2>}
                     </div>
+            
                     : null}
             </div>
         )
@@ -151,15 +175,15 @@ class UserImporter extends React.Component {
             <a href="/example_user_import.csv">Example</a>
                 <input id="csv_ip" onChange={this.onFileChange.bind(this)} type="file" />
                 {this.state.csv_list.length>0 ?
-                    <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Imported CSV</h3>
+                    <div className="row">
+        <div className="col-xs-12">
+          <div className="box">
+            <div className="box-header">
+              <h3 className="box-title">Imported CSV</h3>
             </div>
-            <div class="box-body table-responsive no-padding">
+            <div className="box-body table-responsive no-padding">
                 <form onSubmit={this.saveImported} id="imported_data">
-                    <table class="table table-hover">
+                    <table className="table table-hover">
                         <thead>
                             <tr>
                                 <th>SINo.</th>

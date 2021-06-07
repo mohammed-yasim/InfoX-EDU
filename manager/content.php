@@ -1,7 +1,7 @@
 <?php defined('INFOX') or die('No direct access allowed.'); ?>
 <?php include('yasi_quill.php'); ?>
 <script type="text/babel">
-  <?php include('common_react.php'); ?>
+    <?php include('common_react.php'); ?>
   
 class ContentManager extends React.Component {
     constructor(props) {
@@ -395,11 +395,13 @@ class ContentManager extends React.Component {
                                                     </div>}
                                             </div>
                                             <div className="box-footer no-padding text-center">
+                                            {this.state.data_subjects.length>0 && this.state.data_subjects !== null ?
                                                 <div className="text-center mt-5 mb-5">
                                                     <button className="btn btn-xs btn-primary mx-1 text-capitalize" onClick={() => {
                                                         this.open_editor();
                                                     }}><i className="fa fa-plus"></i> Add New {this.state.content_type}</button>
                                                 </div>
+                                                :<h5 className="text-center"><i className="fa fa-warning text-yellow"></i>Please Add Course first!</h5>}
                                             </div>
                                         </div>
                                     </div>
