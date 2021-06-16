@@ -19,6 +19,7 @@
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onChangeHandler_auto_code = this.onChangeHandler_auto_code.bind(this);
         this.add_subject_submit = this.add_subject_submit.bind(this);
+        this.delete_subject = this.delete_subject.bind(this);
         this.load_table = this.load_table.bind(this);
     }
     onChangeHandler(e) {
@@ -74,6 +75,20 @@
             $('#add_new_subject').show();
         })
     }
+    delete_subject = (course,employee,subject) => {
+        let data = {
+            course : course,
+            employee :employee,
+            subject :subject
+        }
+        var r = window.confirm("Do you want to Delete (Delete all data including Contents)");
+        if (r === true) {
+            axios.post('subjects?action=del',data).then((response) => {
+            alertify.success(response.data);
+            this.load_table(course);
+        });
+}
+    }
     render() {
         return (
             <div className="row">
@@ -124,7 +139,9 @@
                                                             <td>{subject.u_name} <br />{subject.u_desc}</td>
                                                             <td>{this.state.data_employees.filter(item => item.u_id === subject.employee_id).map(employee => { return (employee.u_name) })}</td>
                                                             <td>
-                                                                <button><i className="fa fa-trash"></i></button>
+                                                                <button onClick={()=>{
+                                                                    this.delete_subject(subject.course_id,subject.employee_id,subject.u_id);
+                                                                }}><i className="fa fa-trash"></i></button>
                                                             </td>
                                                         </tr>
                                                     )

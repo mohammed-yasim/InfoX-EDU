@@ -44,6 +44,7 @@ class ContentManager extends React.Component {
         this.editor_subject_handle = this.editor_subject_handle.bind(this);
         this.editor_submit = this.editor_submit.bind(this);
         this.SubjectFilterHandler = this.SubjectFilterHandler.bind(this);
+        this.content_action = this.content_action.bind(this);
     }
     CourseonChangeHandler(e) {
         this.setState({
@@ -132,6 +133,15 @@ class ContentManager extends React.Component {
     }
     componentDidMount() {
         this.load_data(this.state.editor_method);
+    }
+    content_action = (id,course,action) => {
+        axios.post(`/content?action=${action}-${this.state.content_type}`,{id:id}).then((response)=>{
+            this.setState({
+            input_course_select: course,
+            content_loading: true
+        })
+        this.fetch_data(course);
+        })
     }
     render() {
         return (
@@ -357,7 +367,7 @@ class ContentManager extends React.Component {
                                                                             <th></th>
                                                                             <td>
                                                                                 {data_set.u_title}<br />
-                                                                                {data_set.u_desc}</td>
+                                                                                <p style={{overflow:'hidden',textOverflow: 'ellipsis',whiteSpace: 'nowrap',width:'350px',height:'50px'}}>{data_set.u_desc}</p></td>
                                                                             <td style={{ fontSize: '80%' }}>
                                                                                 <div>
                                                                                     {data_set.published === 0 ? <label>DRAFT</label> : <span>
@@ -376,8 +386,15 @@ class ContentManager extends React.Component {
                                                                             </td>
                                                                             <td>
                                                                                 <button className="btn btn-xs btn-info mx-1"><i className="fa fa-pencil"></i></button>
-                                                                                <button className="btn btn-xs btn-danger mx-1"><i className="fa fa-trash"></i></button>
-                                                                                {data_set.published === 0 ? <button className="btn btn-xs btn-success mx-1">Publish</button> : <button className="btn btn-xs btn-warning mx-1">Un Publish</button>}
+                                                                                <button className="btn btn-xs btn-danger mx-1" onClick={()=>{
+                                                                                    this.content_action(data_set.u_id,data_set.course_id,'delete')
+                                                                                }}><i className="fa fa-trash"></i></button>
+                                                                                {data_set.published === 0 ? <button onClick={()=>{
+                                                                                    this.content_action(data_set.u_id,data_set.course_id,'publish')
+                                                                                }} className="btn btn-xs btn-success mx-1">Publish</button> :
+                                                                                <button className="btn btn-xs btn-warning mx-1" onClick={()=>{
+                                                                                    this.content_action(data_set.u_id,data_set.course_id,'unpublish')
+                                                                                }}>Un Publish</button>}
                                                                             </td>
                                                                         </tr>
                                                                     )
@@ -401,7 +418,7 @@ class ContentManager extends React.Component {
                                                         this.open_editor();
                                                     }}><i className="fa fa-plus"></i> Add New {this.state.content_type}</button>
                                                 </div>
-                                                :<h5 className="text-center"><i className="fa fa-warning text-yellow"></i>Please Add Course first!</h5>}
+                                                :<h5 className="text-center"><i className="fa fa-warning text-yellow"></i>Please Add Subject first!</h5>}
                                             </div>
                                         </div>
                                     </div>

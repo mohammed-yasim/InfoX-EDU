@@ -2,7 +2,17 @@
 <?php defined('INFOX') or die('No direct access allowed.');?>
 <script type="text/babel">
     <?php include('common_react.php'); ?>
-    function DashboardApp(){
+    class DashboardApp extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                courses :0,
+                employee :0,
+                clients :0,
+                users :20,
+            }
+        }
+        render(){
         return(
             <div className="row">
     <div className="col-md-3 col-sm-6 col-xs-12">
@@ -11,7 +21,7 @@
 
             <div className="info-box-content">
                 <span className="info-box-text">Courses</span>
-                <span className="info-box-number">0</span>
+                <span className="info-box-number">{this.state.courses}</span>
             </div>
 
         </div>
@@ -24,7 +34,7 @@
 
             <div className="info-box-content">
                 <span className="info-box-text">Employees</span>
-                <span className="info-box-number">0</span>
+                <span className="info-box-number">{this.state.employee}</span>
             </div>
 
         </div>
@@ -39,7 +49,7 @@
 
             <div className="info-box-content">
                 <span className="info-box-text">Clients</span>
-                <span className="info-box-number">0</span>
+                <span className="info-box-number">{this.state.clients}</span>
             </div>
 
         </div>
@@ -52,7 +62,7 @@
 
             <div className="info-box-content">
                 <span className="info-box-text">Users</span>
-                <span className="info-box-number">20</span>
+                <span className="info-box-number">{this.state.users}</span>
             </div>
 
         </div>
@@ -61,6 +71,7 @@
 
 </div>
         )
+    }
     }
     function App() {
     return (

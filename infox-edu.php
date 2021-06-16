@@ -323,12 +323,7 @@ desired effect
         </div>
         
         
-        <footer class="main-footer">
-            
-            <div class="pull-right hidden-xs">
-                Anything you want
-            </div>
-            
+        <footer class="main-footer" style="font-size:70%;max-height:30px;padding:3px 3px">
             <strong>Copyright &copy; 2021 <a href="#">Diyainfocare</a>.</strong> All rights reserved.
         </footer>
         

@@ -66,7 +66,7 @@ class CourseManager extends React.Component {
     }
     render() {
         return (<div>
-            <div className="row">
+            <div className="row row-eq-height">
                 {this.state.courses_data.map(course => {
                     return (<div className="col-md-4">
                         <div className="box box-purple">
