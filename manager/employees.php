@@ -11,6 +11,7 @@
             this.load_data = this.load_data.bind(this);
             this.onChangeHandler = this.onChangeHandler.bind(this);
             this.add_new_employee = this.add_new_employee.bind(this);
+            this.employee_action = this.employee_action.bind(this);
         }
         componentDidMount(){
             this.load_data()
@@ -45,6 +46,16 @@
                 $('#employeeModal').show();
              })
         }
+    employee_action = (action,employee) => {
+        let data = {
+            employee : employee
+        }
+        axios.post(`employees?action=${action}`,data).then((response)=>{
+            this.load_data()
+            alertify.success(response.data);
+        })
+
+    }
         render()
         {
             return(
@@ -52,7 +63,7 @@
                 <div className="col-xs-12">
             <button className="btn btn-xs btn-primary"  type="button"  data-toggle="modal" data-target="#employeeModal"><i className="fa fa-plus"></i> New Employee</button>
             <button className="btn btn-xs btn-success mx-1" onClick={()=>{
-                    this.load_data()
+                    this.load_data();
                 }}>Refresh</button>
                 <div className="input-group input-group-sm hidden-xs pull-right" style={{width:'150px'}}>
                     <input type="text" value={this.state.data_filter} onChange={this.onChangeHandler.bind(this)} className="form-control" placeholder="Name Search"/>
@@ -97,11 +108,24 @@
                             </td>
                             <td>
                             {employee.active===0?<span>
-                            <button className="btn btn-xs mx-1 btn-danger mt-5">Activate</button>
-                            <button className="btn btn-xs mx-1 btn-danger mt-5"><i class="fa fa-trash"></i></button>
+                            <button onClick={()=>{
+                                this.employee_action('activate',employee.u_id);
+                            }} className="btn btn-xs mx-1 btn-success mt-5">Activate</button>
+                            {employee.subjects.length === 0 ? 
+                            <button  onClick={()=>{
+                                this.employee_action('suspend',employee.u_id);
+                            }} className="btn btn-xs mx-1 btn-danger mt-5"><i class="fa fa-trash"></i></button>
+                            : <span className="label lebel-warning">Suspend(Re-Assign Subject)</span>}
                             </span>
-                            :<button className="btn btn-xs mx-1 btn-warning mt-5">Deactivate</button>}
-                            <button className="btn btn-xs mx-1 btn-warning mt-5">Change Password</button>
+                            :<span><button  onClick={()=>{
+                                if (window.confirm("Do you really want to Deactivate?")) {
+                                this.employee_action('deactivate',employee.u_id);
+                                }}} className="btn btn-xs mx-1 btn-warning mt-5">Deactivate</button>
+                            <button onClick={()=>{
+                                if (window.confirm("Do you really want to reset password?")) {
+                                    this.employee_action('reset',employee.u_id);
+                                }
+                            }} className="btn btn-xs mx-1 btn-warning mt-5">Reset Password</button></span>}
                             </td>
                             </tr>
                         )
@@ -134,7 +158,7 @@
                 </div>
                 </div>
                 <div className="form-group">
-                <input className="form-control" type="text" name="password" required placeholder="Pasword <MIN-5>" pattern="{5,}"/>
+                <input className="form-control" type="text" name="password" defaultValue={Math.floor(Math.random() * (999999 - 111111) + 111111)} required placeholder="Pasword <MIN-5>" pattern="{5,}"/>
                 </div>
                 <div className="form-group">
                 <input className="form-control" type="text" name="name" required placeholder="Name" pattern="[A-Za-z ]*"/>

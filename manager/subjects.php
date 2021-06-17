@@ -1,7 +1,9 @@
+<?php defined('INFOX') or die('No direct access allowed.'); ?>
 <style>
 .readonly{pointer-events: none;}
 </style>
-<?php defined('INFOX') or die('No direct access allowed.'); ?>
+<link href="/cdn/plugins/easy/easy.css" rel="stylesheet"/>
+<script src="/cdn/plugins/easy/easy.js"></script>
 <script type="text/babel">
     <?php include('common_react.php'); ?>
     class SubjectManager extends React.Component {
@@ -17,20 +19,18 @@
         }
         this.load_data = this.load_data.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this);
-        this.onChangeHandler_auto_code = this.onChangeHandler_auto_code.bind(this);
         this.add_subject_submit = this.add_subject_submit.bind(this);
         this.delete_subject = this.delete_subject.bind(this);
         this.load_table = this.load_table.bind(this);
+        this.reassign_subject = this.reassign_subject.bind(this);
     }
     onChangeHandler(e) {
+        if(e.target.value !== ''){
         this.load_table(e.target.value);
+        }
         this.setState({
-            input_course_select: e.target.value
-        })
-    }
-    onChangeHandler_auto_code(e) {
-        this.setState({
-            auto_subject: e.target.value.toUpperCase().replace(/\s+/g, '-')
+            input_course_select: e.target.value,
+            data_subjects:[]
         })
     }
     load_data = () => {
@@ -39,7 +39,6 @@
                 data_courses: response.data.courses,
                 data_employees: response.data.employees,
                 data_basic_loaded: true,
-
             })
         });
     }
@@ -47,7 +46,12 @@
         axios.get('/subject?course=' + course_id).then((response) => {
             this.setState({
                 data_subjects: response.data
-            })
+            });
+            try{
+                
+                let options = {	url: "/cdn/plugins/easy/subject.js"};
+            $("#subject_autocomplete").easyAutocomplete(options);
+            }catch(e){console.log(e)}
         })
             .catch((err) => {
                 this.setState({
@@ -81,13 +85,23 @@
             employee :employee,
             subject :subject
         }
-        var r = window.confirm("Do you want to Delete (Delete all data including Contents)");
-        if (r === true) {
+        if (window.confirm("Do you want to Delete (Delete all data including Contents)")) {
             axios.post('subjects?action=del',data).then((response) => {
             alertify.success(response.data);
             this.load_table(course);
         });
+    }
 }
+    reassign_subject = (e) => {
+        e.preventDefault();
+        var data = $('#form_reassign').serializeObject();
+        if (window.confirm("Do you want change it?")) {
+            axios.post('subjects?action=change',data).then((response) => {
+                $('#form_reassign')[0].reset();
+            alertify.success(response.data);
+            this.load_table(this.state.input_course_select);
+        });
+    }
     }
     render() {
         return (
@@ -122,7 +136,6 @@
                                     <table className="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Code</th>
                                                 <th>Subject</th>
                                                 <th>Employee</th>
                                                 <th>Actions</th>
@@ -133,10 +146,7 @@
                                                 this.state.data_subjects.map((subject) => {
                                                     return (
                                                         <tr>
-                                                            <td>
-                                                                {subject.shared === 0 ? <span>{subject.u_code}</span> : <span className="label label-danger">{subject.u_code}</span>}
-                                                            </td>
-                                                            <td>{subject.u_name} <br />{subject.u_desc}</td>
+                                                        <td><b>{subject.u_name}</b> - {subject.u_desc}  {subject.shared === 0 ? <span className="pull-right">{subject.u_code}</span> : <span className="label label-danger pull-right">{subject.u_code}</span>} </td>
                                                             <td>{this.state.data_employees.filter(item => item.u_id === subject.employee_id).map(employee => { return (employee.u_name) })}</td>
                                                             <td>
                                                                 <button onClick={()=>{
@@ -153,21 +163,19 @@
                                     : null
                             }
                         </div>
-
                         <div className="box-footer">
-                            {this.state.data_courses.length > 0 ?
+                            {this.state.data_courses.length > 0 && this.state.input_course_select !== '' ?
                                 <form id="add_new_subject" onSubmit={this.add_subject_submit}>
-                                    <div className="row">
-                                        <div className="col-md-4 mt-5">
-                                            <input name="course_id" value={this.state.input_course_select} required type="text" className="form-control input-sm readonly" placeholder="course_id" />
-                                        </div>
-                                        <div className="col-md-4 mt-5">
-                                            <input type="text" className="form-control input-sm readonly" name="code" required value={this.state.auto_subject} placeholder="Subject-code" />
-                                        </div>
+                                    <hr/>
+                                            <input name="course_id" value={this.state.input_course_select} required type="hidden" className="form-control input-sm readonly" placeholder="course_id" />
+                                  
+
+                                    <div>
+                                    <h4 className="text-bold">Add New Subject</h4>
                                     </div>
                                     <div className="row">
                                         <div className="col-md-4 mt-5">
-                                            <input type="text" className="form-control" required name="name" onChange={this.onChangeHandler_auto_code.bind(this)} placeholder="Subject Name" />
+                                            <input id="subject_autocomplete" type="text" className="form-control" required name="name" placeholder="Subject Name" />
                                         </div>
                                         <div className="col-md-4 mt-5">
                                             <select name="employee_id" required type="text" className="form-control">
@@ -188,7 +196,6 @@
                                                     <input type="radio" name="shared" required value="1" />Yes</label>
                                             </div>
                                         </div>
-
                                         <div className="col-md-8 mt-5">
                                             <input type="text" className="form-control" name="desc" required placeholder="Description" />
                                         </div>
@@ -199,6 +206,38 @@
                                     </div>
                                 </form>
                                 : null}
+                                {this.state.data_subjects.length > 0 ? 
+                                <div className="mb-10">
+                                <hr/>
+                                <h4 className="text-bold">Re-Assign Subject</h4>
+                                <form className="row" id="form_reassign" onSubmit={this.reassign_subject}>
+                                <div className="col-md-5">
+                                <select name="subject" required type="text" className="form-control input-sm">
+                                                <option value={''} selelected> Choose Subject</option>
+                                                {this.state.data_subjects.map(subject => {
+                                                    return (
+                                                        <option value={subject.u_id}>{subject.u_name}  - [{subject.u_code}]</option>
+                                                    )
+                                                })}
+                                            </select>
+                                            </div>
+                                            <div className="col-md-5">
+                                <select name="employee" required type="text" className="form-control input-sm">
+                                                <option value={''} selelected> Choose an Employee</option>
+                                                {this.state.data_employees.map(employee => {
+                                                    return (
+                                                        <option value={employee.u_id}>{employee.u_name} - [{employee.username}]</option>
+                                                    )
+                                                })}
+                                            </select>
+                                            </div>
+                                <div className="col-md-2">
+                                <button className="btn btn-sm btn-primary">Re-Assign</button>
+                                </div>
+                                </form>
+                                <hr/>
+                                </div>
+                                :null}
 
                         </div>
                     </div>

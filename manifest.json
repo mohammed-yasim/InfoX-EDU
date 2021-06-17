@@ -1,0 +1,19 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "InfoX-EDU | Log in",
+  "short_name": "InfoX-EDU | Log",
+  "scope": "/",
+  "display": "browser",
+  "start_url": "https://client.nooneducare.in/",
+  "background_color": "#000000",
+  "theme_color": "transparent",
+  "description": "",
+  "orientation": "any",
+  "related_applications": [],
+  "prefer_related_applications": "false",
+  "icons": [],
+  "url": "https://client.nooneducare.in",
+  "generated": true,
+  "screenshots": []
+}

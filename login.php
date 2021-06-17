@@ -35,6 +35,11 @@
     max-height:50vh;
 }
 </style>
+<script type="module">
+   import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+   const el = document.createElement('pwa-update');
+   document.body.appendChild(el);
+</script>
 </head>
 <body class="hold-transition login-page mybody" style="">
     <div class="login-box">

@@ -387,7 +387,7 @@ class ContentManager extends React.Component {
                                                                             <td>
                                                                                 <button className="btn btn-xs btn-info mx-1"><i className="fa fa-pencil"></i></button>
                                                                                 <button className="btn btn-xs btn-danger mx-1" onClick={()=>{
-                                                                                    this.content_action(data_set.u_id,data_set.course_id,'delete')
+                                                                                    if(window.confirm("Do you want to delete?")){this.content_action(data_set.u_id,data_set.course_id,'delete')}
                                                                                 }}><i className="fa fa-trash"></i></button>
                                                                                 {data_set.published === 0 ? <button onClick={()=>{
                                                                                     this.content_action(data_set.u_id,data_set.course_id,'publish')

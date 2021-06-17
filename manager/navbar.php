@@ -21,7 +21,8 @@
                 </ul>
             </li>
             <li><a href="/content"><i class="fa fa-circle-o text-aqua"></i> <span>Content Manger</span></a></li>
-            <li class="header">Subscriptions</li>
+            <li><a href="/user-subscriptions"><i class="fa fa-universal-access text-aqua"></i> <span>U-Subscriptions</span></a></li>
+            <li><a href="/user-achivements"><i class="fa fa-trophy text-aqua"></i> <span>U-Achivements</span></a></li>
             <!----
             <li class="treeview" style="height: auto;">
                 <a href="#"><i class="fa fa-link"></i><span>Content</span>

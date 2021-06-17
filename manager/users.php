@@ -204,7 +204,7 @@ class UserImporter extends React.Component {
                         </thead>
                         <tbody>
                             {this.state.csv_list.map((data, id) => {
-                                if (id > 0) {
+                                if (id > 0 && data[0] !== '') {
                                     return (
                                         <tr>
                                             <td>

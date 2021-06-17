@@ -40,6 +40,6 @@ axios.interceptors.response.use(function (response) {
     } catch (e) {
         var err = " - ";
     }
-    alertify.alert('InfoX-EDU',`${err} ${error}`);
+    alertify.alert('InfoX-EDU',`${err}`);
     return Promise.reject(error);
 });
