@@ -190,7 +190,7 @@ desired effect
 |---------------------------------------------------------|
 -->
 
-<body class="hold-transition skin-purple fixed sidebar-mini sidebar-collapse">
+<body class="hold-transition skin-purple sidebar-collapse sidebar-mini">
     <div class="wrapper">
 
         <header class="main-header">

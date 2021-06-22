@@ -5,6 +5,7 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
             <li><a href="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+
             <li class="header">Institution Management</li>
             <li class="treeview" style="height: auto;">
                 <a href="#"><i class="fa fa-link"></i><span>Core</span>
@@ -20,9 +21,13 @@
                     <li><a href="/users"><i class="fa fa-users"></i> <span>Users</span></a></li>
                 </ul>
             </li>
-            <li><a href="/content"><i class="fa fa-circle-o text-aqua"></i> <span>Content Manger</span></a></li>
+            <li><a href="/content"><i class="fa fa-circle-o text-aqua"></i> <span>Content</span></a></li>
+            <li><a href="/infox_tools"><i class="fa fa-cogs text-aqua"></i> <span>Infox Tools</span></a></li>
+            <li><a href="/media"><i class="fa fa-headphones text-aqua text-xs"></i><span><i class="fa fa-video-camera text-aqua"></i> Media</span></a></li>
+            <li><a href="/user-performance"><i class="fa fa-trophy text-aqua"></i> <span>U-Performance</span></a></li>
+            <li><a href="/user-log"><i class="fa fa-list-alt text-aqua"></i> <span>U-Log</span></a></li>
             <li><a href="/user-subscriptions"><i class="fa fa-universal-access text-aqua"></i> <span>U-Subscriptions</span></a></li>
-            <li><a href="/user-achivements"><i class="fa fa-trophy text-aqua"></i> <span>U-Achivements</span></a></li>
+            <li><a href="/posts"><i class="fa fa-sticky-note text-danger"></i> <span>Public Posts</span></a></li>
             <!----
             <li class="treeview" style="height: auto;">
                 <a href="#"><i class="fa fa-link"></i><span>Content</span>

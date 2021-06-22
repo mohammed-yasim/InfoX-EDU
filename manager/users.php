@@ -32,6 +32,7 @@
     }
     onCourseChange = (e) => {
         let course_id = e.target.value;
+        if(course_id !== ''){
         if ($.fn.DataTable.isDataTable("#userslist_table")) {
   $('#userslist_table').DataTable().destroy();
 }
@@ -49,7 +50,13 @@
       'autoWidth'   : true
     });
         });
+    }else{
+        this.setState({
+                selected_course: course_id,
+                user_temp_list: [],
+            });
     }
+}
     render() {
         return (
             <div>
@@ -99,7 +106,15 @@
                                             <td>
                                               {user.password}
                                             </td>
-                                            <td></td>
+                                            <td>
+                                            {user.active === 0 ?
+                                            <button className="btn btn-xs btn-success">
+                                            Activate
+                                            </button>:
+                                            <button className="btn btn-xs btn-danger">
+                                            Deactivate
+                                            </button>}
+                                            </td>
                                             <td>{user.u_name}
                                             </td>
                                             <td>{user.u_address}
@@ -107,7 +122,12 @@
                                             
                                             <td>{user.u_contact}
                                             </td>
-                                            <td></td>
+                                            <td>
+                                            
+                                            <button className="btn btn-sm btn-info">
+                                            View Profile
+                                            </button>
+                                            </td>
                                            </tr>
                                     )
                                                 })}

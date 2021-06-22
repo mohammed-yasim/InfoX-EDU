@@ -38,8 +38,8 @@ axios.interceptors.response.use(function (response) {
             if (r == true) {window.location.href = '/?logout'}
         }
     } catch (e) {
-        var err = " - ";
+        var err = "";
     }
-    alertify.alert('InfoX-EDU',`${err}`);
+    alertify.alert(`InfoX-EDU ${error}`,`${err}`);
     return Promise.reject(error);
 });

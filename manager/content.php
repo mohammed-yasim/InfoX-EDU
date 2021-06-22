@@ -1,5 +1,10 @@
 <?php defined('INFOX') or die('No direct access allowed.'); ?>
 <?php include('yasi_quill.php'); ?>
+<style>
+div > div[data-tooltip="Pop-out"] {
+    display:none !important;
+}
+</style>
 <script type="text/babel">
     <?php include('common_react.php'); ?>
   
@@ -31,6 +36,7 @@ class ContentManager extends React.Component {
             //EDITOR
             editor_subject: '',
             editor_method: '',
+            editor_data : null,
             //Filter
             subject_filter:''
         }
@@ -96,10 +102,11 @@ class ContentManager extends React.Component {
             })
         }
     }
-    open_editor = () => {
+    open_editor = (method="add",data=null) => {
         this.setState({
             content_editor: true,
-            editor_method: 'add'
+            editor_method: method,
+            'editor_data':data
         })
     }
     close_editor = () => {
@@ -119,14 +126,21 @@ class ContentManager extends React.Component {
         //$('#employeeModal').hide();
         var data = $('#editor_form').serializeObject();
         axios.post('/contents?action=' + this.state.editor_method + '-' + this.state.content_type, data).then((response) => {
+            if(this.state.editor_method === 'add'){
             const data_content = this.state.data_content;
             data_content.push(response.data)
             this.setState({
                 data_content: data_content
             })
-            $('#editor_form')[0].reset();
-            this.close_editor();
             alertify.success('Data Added');
+            this.close_editor();
+            }
+            $('#editor_form')[0].reset();
+            if(this.state.editor_method === 'edit'){
+                alertify.success('Edit Saved');
+                this.close_editor();
+                this.fetch_data(this.state.input_course_select);
+            }
         }).catch((error) => {
             /// $('#employeeModal').show();
         })
@@ -162,7 +176,7 @@ class ContentManager extends React.Component {
                             <div className="box-body">
 
                                 {
-                                    this.state.data_subjects.length > 0 ?
+                                    this.state.data_subjects.length > 0 && this.state.editor_method === 'add' ?
                                         <div className="col-xs-12 mb-10">
                                             <select className="form-control" value={this.state.editor_subject} onChange={this.editor_subject_handle.bind(this)}>
                                                 <option value={''} selelected>Choose Subject</option>
@@ -174,7 +188,7 @@ class ContentManager extends React.Component {
                                             </select>
                                         </div> : null
                                 }   
-
+                                {this.state.editor_method === 'add' ?
                                 <form id="editor_form" onSubmit={this.editor_submit}>
                                     <div className="row">
                                         <div className="col-md-6">
@@ -224,6 +238,57 @@ class ContentManager extends React.Component {
                                         <button className="btn btn-success text-capitalize" type="submit">{this.state.editor_method}</button>   
                                     </div>
                                 </form>
+                                :null}
+                                {this.state.editor_method === 'edit' ?
+                                <form id="editor_form" onSubmit={this.editor_submit}>
+                                <input type="hidden" value={this.state.editor_data.u_id} name="u_id" />
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <label>Edit Title</label>
+                                                <input type="text" className="form-control input-sm" placeholder="Example : Chapter 1 Introduction" required name="title" defaultValue={this.state.editor_data.u_title} />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Description</label>
+                                                <textarea className="form-control" rows="3" placeholder="Eg : Aim - Structure" required name="desc">{this.state.editor_data.u_desc}</textarea>
+                                            </div>
+                                            <div className="form-group">
+                                            {this.state.editor_data.expiry === 0 ?
+                                                <div className="radio">
+                                                    <label lassName="mx-1 text-bold">After Publish Visibility : </label>
+                                                    <label className="mx-1">
+                                                        <input type="radio" name="visible" required value="0" checked />Yes </label>
+                                                    <label className="mx-1">
+                                                        <input type="radio" name="visible" value="1" required />No</label>
+                                                </div>
+                                                :
+                                                <div className="radio">
+                                                    <label lassName="mx-1 text-bold">After Publish Visibility : </label>
+                                                    <label className="mx-1">
+                                                        <input type="radio" name="visible" required value="0"  />Yes </label>
+                                                    <label className="mx-1">
+                                                        <input type="radio" name="visible" value="1" required checked />No</label>
+                                                </div>
+                                            }
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <label>Published On</label>
+                                                <input type="datetime-local" className="form-control" required name="pub_date" defaultValue={new Date((new Date(this.state.editor_data.pub_date ).getTime() - new Date(this.state.editor_data.pub_date ).getTimezoneOffset() * 60000)).toISOString().slice(0,16)} />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Visible Up To</label>
+                                                <input type="datetime-local" className="form-control" required name="exp_date" defaultValue={ new Date((new Date(this.state.editor_data.exp_date).getTime() - new Date(this.state.editor_data.exp_date).getTimezoneOffset() * 60000)).toISOString().slice(0,16)} />
+                                            </div>
+                                            <input type="text" className="form-control input-sm non-input"  placeholder="yasi_quill-file-blob-url" id="yasi_quill-file-blob-url" name="blobdata" required  defaultValue={this.state.editor_data.u_blob}  />
+                                        </div>
+                                    </div>
+                                    <div className="col-xs-12">
+                                        <button className="btn btn-success text-capitalize" type="submit">Save {this.state.editor_method}</button>   
+                                    </div>
+                                </form>
+                                :null}
                             </div>
                             <div className="box-footer">
                             </div>
@@ -385,7 +450,9 @@ class ContentManager extends React.Component {
                                                                                 </div>
                                                                             </td>
                                                                             <td>
-                                                                                <button className="btn btn-xs btn-info mx-1"><i className="fa fa-pencil"></i></button>
+                                                                                <button className="btn btn-xs btn-info mx-1" onClick={()=>{
+                                                                                    this.open_editor('edit',data_set);
+                                                                                }}><i className="fa fa-pencil"></i></button>
                                                                                 <button className="btn btn-xs btn-danger mx-1" onClick={()=>{
                                                                                     if(window.confirm("Do you want to delete?")){this.content_action(data_set.u_id,data_set.course_id,'delete')}
                                                                                 }}><i className="fa fa-trash"></i></button>

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/cdn/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/cdn/Ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="/cdn/dist/css/AdminLTE.min.css">
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,6 +46,8 @@
     <div class="login-box">
         <div class="login-box-body" style="    box-shadow: 0 0px 10px rgba(0,0,0,0.30), 0 0px 10px rgba(0,0,0,0.22);">
         <h3 class="text-center"><a><b>InfoX-EDU</b> 0.2</a></h3>
+        	
+<a href="http://torrent.azba.in/24a60b5ccf43d214a7a79bc13fa85b11">Click this link to launch you app from web</a>
             <p class="login-box-msg text-danger"><?php if (isset($response['message'])) {
                                                     echo $response['message'];
                                                 }else{echo("Sign in to start your session");} ?></p>

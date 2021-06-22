@@ -10840,6 +10840,7 @@ var Video = function (_BlockEmbed) {
       node.setAttribute('frameborder', '0');
       node.setAttribute('allowfullscreen', true);
       node.setAttribute('src', this.sanitize(value));
+      node.sandbox = "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-same-origin allow-scripts allow-top-navigation allow-top-navigation-by-user-activation";
       return node;
     }
   }, {

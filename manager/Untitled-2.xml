@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8"?><manifest versionCode="211307004" versionName="2.21.13.7" compileSdkVersion="30" compileSdkVersionCodename="11" package="com.whatsapp" platformBuildVersionCode="30" platformBuildVersionName="11">
+  <uses-sdk minSdkVersion="16" targetSdkVersion="29"/>
+  <uses-feature name="android.hardware.bluetooth" required="false"/>
+  <uses-feature name="android.hardware.location" required="false"/>
+  <uses-feature name="android.hardware.location.network" required="false"/>
+  <uses-feature name="android.hardware.location.gps" required="false"/>
+  <uses-feature name="android.hardware.camera" required="false"/>
+  <uses-feature name="android.hardware.nfc" required="false"/>
+  <uses-feature name="android.hardware.wifi" required="false"/>
+  <uses-feature name="android.hardware.telephony" required="false"/>
+  <queries>
+    <package name="com.facebook.orca"/>
+    <intent>
+      <action name="android.intent.action.VIEW"/>
+      <data scheme="https" host="messenger.com"/>
+    </intent>
+    <package name="com.facebook.adsmanager"/>
+    <package name="com.facebook.analytics"/>
+    <package name="com.facebook.talk"/>
+    <package name="com.facebook.arstudio.player"/>
+    <package name="com.instagram.boomerang"/>
+    <package name="com.facebook.katana"/>
+    <package name="com.facebook.lite"/>
+    <package name="com.instagram.android"/>
+    <package name="com.oculus.home"/>
+    <package name="com.oculus.horizon"/>
+    <intent>
+      <action name="android.intent.action.VIEW"/>
+      <data mimeType="/"/>
+    </intent>
+    <intent>
+      <action name="android.intent.action.SEND"/>
+      <data mimeType="/"/>
+    </intent>
+    <intent>
+      <action name="android.intent.action.PICK"/>
+      <data mimeType="/"/>
+    </intent>
+    <intent>
+      <action name="android.intent.action.MAIN"/>
+      <category name="android.intent.category.HOME"/>
+    </intent>
+    <intent>
+      <action name="android.intent.action.SEND_MULTIPLE"/>
+      <data mimeType="/"/>
+    </intent>
+    <package name="com.facebook.services"/>
+    <intent>
+      <action name="com.whatsapp.action.INSTRUMENTATION_CALLBACK_SERVICE"/>
+    </intent>
+    <package name="com.google.android.apps.pixelmigrate"/>
+    <package name="com.google.android.apps.restore"/>
+    <package name="com.whatsapp.w4b"/>
+  </queries>
+  <uses-permission name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+  <uses-permission name="android.permission.GET_ACCOUNTS"/>
+  <uses-permission name="android.permission.READ_PHONE_STATE"/>
+  <uses-permission name="android.permission.READ_PHONE_NUMBERS"/>
+  <uses-permission name="android.permission.RECEIVE_SMS"/>
+  <uses-permission name="android.permission.VIBRATE"/>
+  <uses-permission name="android.permission.USE_BIOMETRIC"/>
+  <uses-permission name="android.permission.USE_FINGERPRINT"/>
+  <uses-permission name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission name="android.permission.ACCESS_NETWORK_STATE"/>
+  <uses-permission name="android.permission.ACCESS_WIFI_STATE"/>
+  <uses-permission name="android.permission.BLUETOOTH"/>
+  <uses-permission name="android.permission.BROADCAST_STICKY"/>
+  <uses-permission name="android.permission.CAMERA"/>
+  <uses-permission name="android.permission.CHANGE_NETWORK_STATE"/>
+  <uses-permission name="android.permission.CHANGE_WIFI_STATE"/>
+  <uses-permission name="android.permission.GET_TASKS"/>
+  <uses-permission name="android.permission.INSTALL_SHORTCUT"/>
+  <uses-permission name="android.permission.INTERNET"/>
+  <uses-permission name="android.permission.MANAGE_ACCOUNTS"/>
+  <uses-permission name="android.permission.MANAGE_OWN_CALLS"/>
+  <uses-permission name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+  <uses-permission name="android.permission.NFC"/>
+  <uses-permission name="android.permission.READ_CONTACTS"/>
+  <uses-permission name="android.permission.READ_PROFILE"/>
+  <uses-permission name="android.permission.READ_SYNC_SETTINGS"/>
+  <uses-permission name="android.permission.READ_SYNC_STATS"/>
+  <uses-permission name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+  <uses-permission name="android.permission.RECORD_AUDIO"/>
+  <uses-permission name="android.permission.SEND_SMS"/>
+  <uses-permission name="android.permission.USE_CREDENTIALS"/>
+  <uses-permission name="android.permission.WAKE_LOCK"/>
+  <uses-permission name="android.permission.WRITE_CONTACTS"/>
+  <uses-permission name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission name="android.permission.WRITE_SYNC_SETTINGS"/>
+  <uses-permission name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+  <uses-permission name="android.permission.FOREGROUND_SERVICE"/>
+  <uses-permission name="android.permission.USE_FULL_SCREEN_INTENT"/>
+  <uses-permission name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+  <uses-permission name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+  <uses-permission name="com.google.android.c2dm.permission.RECEIVE"/>
+  <uses-permission name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+  <uses-permission name="com.sec.android.provider.badge.permission.READ"/>
+  <uses-permission name="com.sec.android.provider.badge.permission.WRITE"/>
+  <uses-permission name="com.htc.launcher.permission.READ_SETTINGS"/>
+  <uses-permission name="com.htc.launcher.permission.UPDATE_SHORTCUT"/>
+  <uses-permission name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
+  <uses-permission name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE"/>
+  <uses-permission name="com.huawei.android.launcher.permission.READ_SETTINGS"/>
+  <uses-permission name="com.huawei.android.launcher.permission.WRITE_SETTINGS"/>
+  <uses-permission name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
+  <uses-permission name="com.whatsapp.permission.BROADCAST"/>
+  <uses-permission name="com.whatsapp.permission.MAPS_RECEIVE"/>
+  <uses-permission name="com.whatsapp.permission.REGISTRATION"/>
+  <uses-permission name="com.whatsapp.sticker.READ"/>
+  <uses-permission-sdk-23 name="android.permission.CALL_PHONE"/>
+  <uses-permission-sdk-23 name="android.permission.ANSWER_PHONE_CALLS"/>
+  <uses-permission-sdk-23 name="android.permission.READ_CALL_LOG"/>
+  <permission name="com.whatsapp.permission.BROADCAST" protectionLevel="0x2"/>
+  <permission name="com.whatsapp.permission.MAPS_RECEIVE" protectionLevel="0x2"/>
+  <permission name="com.whatsapp.permission.REGISTRATION" protectionLevel="0x2"/>
+  <permission name="com.whatsapp.permission.MIGRATION_CONTENT_PROVIDER" protectionLevel="0x2"/>
+  <permission label="read and display WhatsApp stickers from third party sticker apps" name="com.whatsapp.sticker.READ" description="Allows WhatsApp to read and display stickers from third party sticker apps."/>
+  <uses-permission name="android.permission.READ_EXTERNAL_STORAGE"/>
+  <application theme="Theme.App" label="WhatsApp" icon="res/mipmap-anydpi-v26/icon.xml" name="com.whatsapp.AppShell" backupAgent="com.whatsapp.registration.backuptoken.BackupTokenAgentHelper" allowBackup="true" vmSafeMode="false" restoreAnyVersion="true" hardwareAccelerated="true" supportsRtl="true" fullBackupOnly="false" extractNativeLibs="true" fullBackupContent="false" networkSecurityConfig="res/xml/network_security_config.xml" appComponentFactory="androidx.core.app.CoreComponentFactory" hasFragileUserData="true" requestLegacyExternalStorage="true">
+    <uses-library name="com.sec.android.app.multiwindow" required="false"/>
+    <uses-library name="org.apache.http.legacy" required="false"/>
+    <meta-data name="com.google.android.maps.v2.API_KEY" value="AIzaSyCGOJbGQ95SWrXxl8wk-_cRQZcJl42bvDU"/>
+    <meta-data name="com.google.android.gms.car.application" resource="automotive_app_desc"/>
+    <meta-data name="com.google.android.gms.version" value="12451000"/>
+    <meta-data name="com.sec.android.support.multiwindow" value="true"/>
+    <meta-data name="com.sec.android.multiwindow.DEFAULT_SIZE_W" value="632.0dip"/>
+    <meta-data name="com.sec.android.multiwindow.DEFAULT_SIZE_H" value="598.0dip"/>
+    <meta-data name="com.sec.android.multiwindow.MINIMUM_SIZE_W" value="632.0dip"/>
+    <meta-data name="com.sec.android.multiwindow.MINIMUM_SIZE_H" value="598.0dip"/>
+    <meta-data name="android.max_aspect" value="2.1"/>
+    <activity theme="Theme.App" label="" name="com.whatsapp.instrumentation.ui.InstrumentationAuthActivity" exported="true"/>
+    <service name="com.whatsapp.instrumentation.service.InstrumentationFGService"/>
+    <service name="com.whatsapp.instrumentation.api.InstrumentationService" enabled="true" exported="true">
+      <intent-filter>
+        <action name="com.whatsapp.instrumentation.REQUEST"/>
+        <category name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </service>
+    <provider name="com.whatsapp.instrumentation.api.InstrumentationProvider" enabled="true" exported="false" authorities="com.whatsapp.provider.instrumentation" grantUriPermissions="true"/>
+    <activity theme="Theme.App" name="com.whatsapp.twofactor.SettingsTwoFactorAuthActivity" configChanges="0xf30"/>
+    <activity theme="Theme.App" name="com.whatsapp.twofactor.TwoFactorAuthActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.account.delete.DeleteAccountActivity" configChanges="0xfb0" windowSoftInputMode="0x1"/>
+    <activity theme="Theme.App" name="com.whatsapp.account.delete.DeleteAccountConfirmation" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.phonematching.CountryPicker" configChanges="0xfb0"/>
+    <activity theme="Theme.App" name="com.whatsapp.account.delete.DeleteAccountFeedback" configChanges="0xf30"/>
+    <activity name="com.whatsapp.accountsync.LoginActivity" screenOrientation="1">
+      <intent-filter label="WhatsApp">
+        <action name="android.intent.action.VIEW"/>
+      </intent-filter>
+    </activity>
+    <activity name="com.whatsapp.accountsync.ProfileActivity" exported="true" configChanges="0xfb0">
+      <intent-filter>
+        <action name="android.intent.action.VIEW"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data scheme="content"/>
+        <data host="com.android.contacts"/>
+        <data mimeType="vnd.android.cursor.item/vnd.com.whatsapp.profile"/>
+      </intent-filter>
+    </activity>
+    <activity name="com.whatsapp.accountsync.CallContactLandingActivity" permission="android.permission.CALL_PHONE" exported="true" configChanges="0xfb0">
+      <intent-filter>
+        <action name="android.intent.action.VIEW"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data scheme="content"/>
+        <data host="com.android.contacts"/>
+        <data mimeType="vnd.android.cursor.item/vnd.com.whatsapp.voip.call"/>
+        <data mimeType="vnd.android.cursor.item/vnd.com.whatsapp.video.call"/>
+      </intent-filter>
+    </activity>
+    <service name="com.whatsapp.accountsync.AccountAuthenticatorService" exported="true">
+      <intent-filter>
+        <action name="android.accounts.AccountAuthenticator"/>
+      </intent-filter>
+      <meta-data name="android.accounts.AccountAuthenticator" resource="authenticator"/>
+    </service>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.deeplink.DeepLinkActivity" configChanges="0xfb0"/>
+    <activity-alias name="com.whatsapp.TextAndDirectChatDeepLink" targetActivity="com.whatsapp.deeplink.DeepLinkActivity">
+      <intent-filter autoVerify="true">
+        <action name="android.intent.action.VIEW"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <category name="android.intent.category.BROWSABLE"/>
+        <data scheme="http" host="api.whatsapp.com"/>
+        <data scheme="https" host="api.whatsapp.com"/>
+        <data scheme="http" host="wa.me"/>
+        <data scheme="https" host="wa.me"/>
+      </intent-filter>
+      <intent-filter>
+        <action name="android.intent.action.VIEW"/>
+        <action name="com.whatsapp.DEEP_LINK_REDIRECT"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <category name="android.intent.category.BROWSABLE"/>
+        <data scheme="whatsapp" host="send"/>
+        <data scheme="whatsapp" host="catalog"/>
+        <data scheme="whatsapp" host="product"/>
+        <data scheme="whatsapp" host="message"/>
+        <data scheme="whatsapp" host="pay"/>
+        <data scheme="whatsapp" host="stickerpack"/>
+        <data scheme="whatsapp" host="settings"/>
+        <data scheme="whatsapp" host="qr"/>
+        <data scheme="whatsapp" host="archive_settings"/>
+        <data scheme="whatsapp" host="disappearing_mode"/>
+      </intent-filter>
+      <intent-filter>
+        <action name="android.intent.action.VIEW"/>
+        <action name="com.whatsapp.DEEP_LINK_REDIRECT"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <category name="android.intent.category.BROWSABLE"/>
+        <data scheme="whatsapp-consumer" host="send"/>
+        <data scheme="whatsapp-consumer" host="biztools"/>
+      </intent-filter>
+    </activity-alias>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.greenalert.GreenAlertActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="ActivityTheme" name="org.npci.commonlibrary.GetCredential" exported="false" screenOrientation="1"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiPaymentMethodSelectionActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.IndiaUpiBalanceDetailsActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiPaymentsValuePropsActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.payments.ui.IndiaUpiPaymentsValuePropsBottomSheetActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiPaymentsTosActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.IndiaUpiPaymentTransactionDetailsActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiPaymentsAccountSetupActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.payments.ui.IndiaUpiBankPickerActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiBankAccountPickerActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.IndiaUpiDebitCardVerifActivity" screenOrientation="1" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiEducationActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiBankAccountLinkingConfirmationActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiBankAccountAddedLandingActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiSimVerificationActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiBankAccountLinkingRetryActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.IndiaUpiBankAccountDetailsActivity" launchMode="1" configChanges="0xfb0" windowSoftInputMode="0x30"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiResetPinActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiDeviceBindActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.IndiaUpiVpaContactInfoActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiChangePinActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.payments.ui.IndiaUpiCheckBalanceActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiInvitePaymentActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.IndiaUpiPaymentActivity" screenOrientation="1" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.IndiaUpiPaymentSettingsActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.IndiaUpiMandateHistoryActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.payments.ui.IndiaUpiContactPicker" configChanges="0xfb0"/>
+    <activity theme="Theme.App" name="com.whatsapp.payments.ui.IndiaUpiQrCodeScanActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.QRCode" name="com.whatsapp.payments.ui.IndiaUpiSecureQrCodeDisplayActivity" screenOrientation="1" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.payments.ui.IndiaUpiQrCodeUrlValidationActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.QuickContact" name="com.whatsapp.payments.ui.IndiaUpiPaymentLauncherActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.payments.ui.IndiaUpiMandatePaymentActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.payments.receiver.IndiaUpiPayIntentReceiverActivity">
+      <intent-filter>
+        <action name="android.intent.action.VIEW"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <category name="android.intent.category.BROWSABLE"/>
+        <data scheme="upi" host="pay"/>
+      </intent-filter>
+    </activity>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.BrazilPaymentSettingsActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.AppCompat.BloksTransparent" name="com.whatsapp.payments.ui.BrazilPayBloksActivity" screenOrientation="1" configChanges="0xf30"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.BrazilPaymentActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.BrazilSmbPaymentActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.BrazilPaymentTransactionDetailActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.FbPayCard" name="com.whatsapp.payments.ui.BrazilPaymentCardDetailsActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.FbPayCard" name="com.whatsapp.payments.ui.BrazilFbPayHubActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.FbPayCard" name="com.whatsapp.payments.ui.BrazilMerchantDetailsListActivity" launchMode="1" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.FbPayCard" name="com.whatsapp.payments.ui.MerchantPayoutTransactionHistoryActivity" launchMode="1" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.Translucent.Dimmed" name="com.whatsapp.payments.ui.BrazilViralityLinkVerifierActivity" launchMode="2" configChanges="0xfb0"/>
+    <activity theme="Theme.App.FbPayCard" name="com.whatsapp.payments.ui.BrazilDyiReportActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.payments.ui.PaymentTransactionHistoryActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.payments.ui.PaymentGroupParticipantPickerActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.PaymentTransactionDetailsListActivity" launchMode="1" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.PaymentDeleteAccountActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.payments.ui.PaymentContactPicker" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.payments.ui.PaymentsUpdateRequiredActivity" launchMode="1" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.Translucent.Dimmed" name="com.whatsapp.payments.ui.ViralityLinkVerifierActivity" launchMode="2" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.payments.ui.PaymentInvitePickerActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Bloks" name="com.whatsapp.wabloks.ui.WaBloksActivity" screenOrientation="1" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.Bloks" name="com.whatsapp.wabloks.debug.WaBloksDebugActivity" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.crop.CropImage"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.textstatuscomposer.TextStatusComposerActivity" configChanges="0xfb0" windowSoftInputMode="0x11"/>
+    <activity name="com.whatsapp.ShareProductLinkActivity" configChanges="0xfb0"/>
+    <activity name="com.whatsapp.ShareCatalogLinkActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.CatalogImageListActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.MediaView" name="com.whatsapp.CatalogMediaView" configChanges="0xfb0"/>
+    <activity theme="Theme.App" name="com.whatsapp.biz.catalog.view.activity.CatalogListActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App" name="com.whatsapp.biz.catalog.view.activity.ProductListActivity" configChanges="0xfb0"/>
+    <activity name="com.whatsapp.blockbusiness.BlockBusinessActivity"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.migration.android.view.GoogleMigrateImporterActivity" configChanges="0x200"/>
+    <service name="com.whatsapp.migration.android.integration.service.GoogleMigrateService"/>
+    <meta-data name="firebase_analytics_collection_deactivated" value="true"/>
+    <meta-data name="com.google.android.backup.api_key" value="AEdPqrEAAAAImRFQvx8szY9HcRV2sTL7zp5DyY5Lr6ldGt0Z1Q"/>
+    <activity theme="Theme.App.Launcher" label="WhatsApp" name="com.whatsapp.Main" configChanges="0xfb0" hardwareAccelerated="false">
+      <intent-filter label="WhatsApp">
+        <action name="android.intent.action.MAIN"/>
+        <category name="android.intent.category.LAUNCHER"/>
+        <category name="android.intent.category.MULTIWINDOW_LAUNCHER"/>
+      </intent-filter>
+      <meta-data name="android.app.shortcuts" resource="shortcuts"/>
+    </activity>
+    <activity theme="Theme.App.CondensedActionBar" name="com.whatsapp.Conversation" configChanges="0xdb0" windowSoftInputMode="0x1">
+      <intent-filter>
+        <action name="android.intent.action.SENDTO"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <category name="android.intent.category.BROWSABLE"/>
+        <data scheme="sms"/>
+        <data scheme="smsto"/>
+      </intent-filter>
+      <intent-filter>
+        <action name="com.whatsapp.Conversation"/>
+        <category name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.profile.ProfileInfoActivity" configChanges="0xd30"/>
+    <activity-alias name="com.whatsapp.SetAsProfilePhoto" targetActivity="com.whatsapp.profile.ProfileInfoActivity">
+      <intent-filter label="WhatsApp profile photo">
+        <action name="android.intent.action.ATTACH_DATA"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data mimeType="image/*"/>
+      </intent-filter>
+    </activity-alias>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.profile.ProfilePhotoReminder" configChanges="0xfb0" windowSoftInputMode="0x1"/>
+    <activity theme="Theme.App" name="com.whatsapp.status.SetStatus" configChanges="0xfb0"/>
+    <activity theme="Theme.App.White.NoActionBar" name="com.whatsapp.registration.EULA" launchMode="2" configChanges="0xb30"/>
+    <activity theme="Theme.App.White.NoActionBar" name="com.whatsapp.registration.RegisterPhone" launchMode="2" configChanges="0xfb0" windowSoftInputMode="0x15"/>
+    <activity theme="Theme.App.White.NoActionBar" name="com.whatsapp.registration.VerifySms" launchMode="2" configChanges="0xfb0">
+      <intent-filter label="Verify your phone number">
+        <action name="android.intent.action.VIEW"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <category name="android.intent.category.BROWSABLE"/>
+        <data scheme="whatsapp" host="r"/>
+      </intent-filter>
+    </activity>
+    <activity-alias name="com.whatsapp.VerifySmsDeepLink" targetActivity="com.whatsapp.registration.VerifySms">
+      <intent-filter label="Verify your phone number" autoVerify="true">
+        <action name="android.intent.action.VIEW"/>
+        <category name="android.intent.category.BROWSABLE"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data scheme="http" host="v.whatsapp.com"/>
+        <data scheme="https" host="v.whatsapp.com"/>
+      </intent-filter>
+    </activity-alias>
+    <activity theme="Theme.App.White.NoActionBar" name="com.whatsapp.registration.VerifyWithFlashCall" launchMode="2" configChanges="0xfb0" parentActivityName="com.whatsapp.registration.RegisterPhone"/>
+    <activity theme="Theme.App.White.NoActionBar" name="com.whatsapp.registration.VerifyTwoFactorAuth" launchMode="2" configChanges="0xfb0"/>
+    <activity theme="Theme.App.White.NoActionBar" name="com.whatsapp.registration.directmigration.RestoreFromConsumerDatabaseActivity" launchMode="1" configChanges="0xfb0" windowSoftInputMode="0x23"/>
+    <activity theme="Theme.App.White.NoActionBar" name="com.whatsapp.registration.RegisterName" launchMode="2" configChanges="0xfb0" windowSoftInputMode="0x10"/>
+    <activity theme="Theme.App" name="com.whatsapp.support.DescribeProblemActivity" configChanges="0xfb0" windowSoftInputMode="0x12"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.inappsupport.ui.ContactUsActivity" configChanges="0xfb0" windowSoftInputMode="0x12"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.inappsupport.ui.SupportTopicsActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.inappsupport.ui.FaqItemActivityV2" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.systemstatus.SystemStatusActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.settings.Settings" configChanges="0xf30"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.settings.SettingsAccount" configChanges="0xd30"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.settings.SettingsChat" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.settings.SettingsDataUsageActivity" configChanges="0xdb0">
+      <intent-filter label="Storage and data usage">
+        <action name="android.intent.action.MANAGE_NETWORK_USAGE"/>
+        <category name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.settings.SettingsChatHistory" configChanges="0xdb0"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.settings.SettingsHelp" configChanges="0xd30"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.settings.SettingsNotifications" configChanges="0xd30">
+      <intent-filter label="Notifications">
+        <action name="android.intent.action.MAIN"/>
+        <category name="android.intent.category.NOTIFICATION_PREFERENCES"/>
+      </intent-filter>
+    </activity>
+    <activity theme="Theme.App" name="com.whatsapp.group.GroupSettingsActivity" configChanges="0xf30"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.settings.SettingsJidNotificationActivity" configChanges="0xd30"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.settings.SettingsNetworkUsage" configChanges="0xf30"/>
+    <activity theme="Theme.App.Prefs.StorageUsage" name="com.whatsapp.storage.StorageUsageActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Prefs.StorageUsage" name="com.whatsapp.storage.StorageUsageGalleryActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.settings.SettingsPrivacy" configChanges="0xdb0"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.settings.SettingsSecurity" configChanges="0xd30"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.report.ReportActivity" configChanges="0xf30"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.backup.google.SettingsGoogleDrive" launchMode="1" configChanges="0xfb0"/>
+    <activity name="com.whatsapp.support.faq.SearchFAQ" configChanges="0xfb0"/>
+    <activity name="com.whatsapp.support.faq.FaqItemActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.settings.About"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.stickers.StickerStorePackPreviewActivity" configChanges="0x4a0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.stickers.StickerStoreActivity" configChanges="0x4a0"/>
+    <activity name="com.whatsapp.blocklist.BlockList" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.authentication.AppAuthSettingsActivity" configChanges="0xdb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.ContactPicker" configChanges="0xfb0">
+      <intent-filter>
+        <action name="android.intent.action.PICK"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <category name="com.whatsapp"/>
+      </intent-filter>
+      <intent-filter>
+        <action name="android.intent.action.SEND"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data mimeType="/"/>
+      </intent-filter>
+      <intent-filter>
+        <action name="android.intent.action.SEND_MULTIPLE"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data mimeType="/"/>
+      </intent-filter>
+      <intent-filter label="WhatsApp Chat">
+        <action name="android.intent.action.CREATE_SHORTCUT"/>
+      </intent-filter>
+      <meta-data name="android.service.chooser.chooser_target_service" value="androidx.sharetarget.ChooserTargetServiceCompat"/>
+    </activity>
+    <activity-alias label="WhatsApp Chat" name="com.whatsapp.CreateConversationShortcut" targetActivity="com.whatsapp.ContactPicker"/>
+    <activity theme="Theme.App.GroupAdminPicker" name="com.whatsapp.group.GroupAdminPickerActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.GroupCallParticipantPicker" name="com.whatsapp.voipcalling.GroupCallParticipantPickerSheet" configChanges="0xfb0" windowSoftInputMode="0x30"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.contact.picker.PhoneContactsSelector" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.contact.picker.InviteNonWhatsAppContactPickerActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.contact.picker.ListMembersSelector" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.conversation.EditBroadcastRecipientsSelector" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.group.GroupMembersSelector" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.contact.picker.AddGroupParticipantsSelector" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray.TransparentActionBar" name="com.whatsapp.conversation.conversationrow.message.MessageDetailsActivity" configChanges="0xfb0"/>
+    <activity name="com.whatsapp.group.NewGroup" configChanges="0xfb0" windowSoftInputMode="0x1"/>
+    <activity theme="Theme.App.ChatInfo" name="com.whatsapp.group.GroupChatInfo" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.group.EditGroupAdminsSelector" configChanges="0xfb0"/>
+    <activity name="com.whatsapp.location.GroupChatLiveLocationsActivity" configChanges="0xf30"/>
+    <activity name="com.whatsapp.location.GroupChatLiveLocationsActivity2" configChanges="0xf30"/>
+    <activity theme="Theme.App.ChatInfo" name="com.whatsapp.chatinfo.ListChatInfo" configChanges="0xfb0"/>
+    <activity theme="Theme.App.ChatInfo" name="com.whatsapp.chatinfo.ContactInfoActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.ChatInfo" name="com.whatsapp.chatinfo.ChatInfoActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.White.NoActionBar" name="com.whatsapp.businessupsell.BusinessProfileEducation" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.settings.Licenses"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.biz.BusinessProfileExtraFieldsActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.White.NoActionBar" name="com.whatsapp.businessupsell.BusinessAppEducation" configChanges="0xfb0"/>
+    <activity theme="Theme.App" name="com.whatsapp.voipcalling.CallLogActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App" name="com.whatsapp.voipcalling.GroupCallLogActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Settings.DayNight.NoActionBar" name="com.whatsapp.conversationslist.ArchiveNotificationSettingActivity" configChanges="0xfb0"/>
+    <activity name="com.whatsapp.conversationslist.ArchivedConversationsActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Starred" name="com.whatsapp.conversation.conversationrow.message.StarredMessagesActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Home" name="com.whatsapp.HomeActivity" launchMode="2" configChanges="0xdb0">
+      <intent-filter label="WhatsApp">
+        <action name="android.nfc.action.NDEF_DISCOVERED"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data mimeType="application/com.whatsapp.chat"/>
+        <data mimeType="application/com.whatsapp.join"/>
+      </intent-filter>
+      <intent-filter label="WhatsApp">
+        <action name="android.intent.action.VIEW"/>
+        <category name="android.intent.category.BROWSABLE"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data scheme="whatsapp" host="chat"/>
+      </intent-filter>
+      <intent-filter label="WhatsApp">
+        <action name="android.intent.action.VIEW"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data scheme="whatsapp" host="status"/>
+      </intent-filter>
+    </activity>
+    <activity-alias name="com.whatsapp.AcceptInviteLinkActivityDeepLink" targetActivity="com.whatsapp.HomeActivity">
+      <intent-filter label="WhatsApp" autoVerify="true">
+        <action name="android.intent.action.VIEW"/>
+        <category name="android.intent.category.BROWSABLE"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data scheme="http" host="chat.whatsapp.com"/>
+        <data scheme="https" host="chat.whatsapp.com"/>
+      </intent-filter>
+    </activity-alias>
+    <activity theme="Theme.QuickContact" name="com.whatsapp.quickcontact.QuickContactActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.viewsharedcontacts.ViewSharedContactArrayActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.GalleryPicker.NoActionBar" name="com.whatsapp.settings.chat.wallpaper.WallpaperPicker" configChanges="0xfb0"/>
+    <activity theme="Theme.App.GalleryPicker.NoActionBar" name="com.whatsapp.settings.chat.wallpaper.downloadable.picker.DownloadableWallpaperPickerActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.WallpaperPreviewTranslucent" name="com.whatsapp.settings.chat.wallpaper.downloadable.picker.DownloadableWallpaperPreviewActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.WallpaperPreviewTranslucent" name="com.whatsapp.settings.chat.wallpaper.WallpaperPreview" configChanges="0xfb0"/>
+    <activity theme="Theme.App.WallpaperPreview" name="com.whatsapp.settings.chat.wallpaper.DefaultWallpaperPreview" screenOrientation="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.settings.chat.wallpaper.WallpaperCurrentPreviewActivity" screenOrientation="1" configChanges="0xdb0"/>
+    <activity name="com.whatsapp.contact.picker.ContactPickerHelp" configChanges="0xfb0"/>
+    <activity theme="Theme.App.GalleryPicker.NoActionBar" name="com.whatsapp.settings.chat.wallpaper.SolidColorWallpaper" configChanges="0xdb0"/>
+    <activity theme="Theme.App.WallpaperPreviewTranslucent" name="com.whatsapp.settings.chat.wallpaper.SolidColorWallpaperPreview" configChanges="0xdb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.settings.chat.wallpaper.WallpaperCategoriesActivity" screenOrientation="1" configChanges="0xdb0"/>
+    <activity theme="Theme.Translucent.NoTitleBar" icon="res/drawable-xxhdpi-v4/ic_capture.png" name="com.whatsapp.profile.CapturePhoto"/>
+    <activity theme="Theme.App.Translucent" icon="res/drawable-xxhdpi-v4/clear.png" name="com.whatsapp.profile.ResetGroupPhoto"/>
+    <activity theme="Theme.App.Translucent" icon="res/drawable-xxhdpi-v4/clear.png" name="com.whatsapp.profile.ResetProfilePhoto"/>
+    <activity theme="Theme.NoDisplay" icon="res/drawable-xxhdpi-v4/clear.png" name="com.whatsapp.support.Remove"/>
+    <activity theme="Theme.NoDisplay" icon="res/drawable-xxhdpi-v4/attach_gallery.png" name="com.whatsapp.profile.ViewProfilePhoto$SavePhoto"/>
+    <activity theme="Theme.App.PopupNotification" name="com.whatsapp.notification.PopupNotification" taskAffinity="" excludeFromRecents="true" launchMode="3" configChanges="0xff0" windowSoftInputMode="0x1"/>
+    <activity theme="Theme.App.GalleryPicker.NoActionBar" name="com.whatsapp.gallery.MediaGalleryActivity" launchMode="2" configChanges="0xfb0"/>
+    <activity theme="Theme.MediaView" name="com.whatsapp.mediaview.MediaViewActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.conversationslist.SmsDefaultAppWarning" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" icon="res/drawable-xxhdpi-v4/ic_search_web.png" name="com.whatsapp.profile.WebImagePicker" exported="false" configChanges="0xfb0" windowSoftInputMode="0x15"/>
+    <activity theme="Theme.ProfilePhoto" name="com.whatsapp.profile.ViewProfilePhoto" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.location.LocationPicker" launchMode="1" configChanges="0x30" windowSoftInputMode="0x12"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.location.LocationPicker2" launchMode="1" configChanges="0x30" windowSoftInputMode="0x12"/>
+    <activity theme="Theme.App" name="com.whatsapp.documentpicker.DocumentPickerActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.PopupAlert" name="com.whatsapp.messaging.CaptivePortalActivity" taskAffinity="" excludeFromRecents="true" launchMode="3"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.registration.ChangeNumber" configChanges="0xfb0" windowSoftInputMode="0x1"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.registration.ChangeNumberNotifyContacts" configChanges="0xfb0" windowSoftInputMode="0x3"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.registration.ChangeNumberOverview" configChanges="0xdb0" windowSoftInputMode="0x2"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.registration.NotifyContactsSelector" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Black.NoActionBar" icon="res/drawable-xhdpi-v4/ic_gallery_picker.png" name="com.whatsapp.mediacomposer.MediaComposerActivity" configChanges="0xfb0" windowSoftInputMode="0x33" hardwareAccelerated="false"/>
+    <activity theme="Theme.App.GalleryPicker" icon="res/drawable-xhdpi-v4/ic_gallery_picker.png" name="com.whatsapp.gallerypicker.GalleryPicker" configChanges="0xfb0"/>
+    <activity theme="Theme.Translucent.NoTitleBar" icon="res/drawable-xxhdpi-v4/ic_gallery.png" name="com.whatsapp.gallerypicker.GalleryPickerLauncher"/>
+    <activity theme="Theme.App.GalleryPicker" icon="res/drawable-xhdpi-v4/ic_gallery_picker.png" name="com.whatsapp.gallerypicker.MediaPicker" configChanges="0xfb0"/>
+    <activity theme="Theme.Camera" label="WhatsApp Camera" icon="res/drawable-xhdpi-v4/launcher_camera.png" name="com.whatsapp.camera.CameraActivity" exported="true" launchMode="2" configChanges="0xfb0" windowSoftInputMode="0x33">
+      <intent-filter label="WhatsApp Camera">
+        <action name="android.intent.action.CREATE_SHORTCUT"/>
+      </intent-filter>
+    </activity>
+    <activity theme="Theme.Camera" label="WhatsApp Camera" icon="res/drawable-xhdpi-v4/launcher_camera.png" name="com.whatsapp.camera.LauncherCameraActivity" exported="true" taskAffinity=":camera" excludeFromRecents="true" configChanges="0xfb0" windowSoftInputMode="0x33"/>
+    <activity theme="Theme.Voip" name="com.whatsapp.voipcalling.VoipActivityV2" exported="false" taskAffinity=":voip" finishOnTaskLaunch="true" excludeFromRecents="true" launchMode="2" screenOrientation="1" configChanges="0xfb0" supportsPictureInPicture="true"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.voipcalling.VoipNotAllowedActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.voipcalling.GroupCallParticipantPicker" configChanges="0xfb0"/>
+    <activity theme="Theme.App.CallRating" name="com.whatsapp.voipcalling.CallRatingActivity" excludeFromRecents="true" launchMode="1" configChanges="0xff0" windowSoftInputMode="0x11"/>
+    <activity theme="Theme.App.VoipAppUpdate" name="com.whatsapp.voipcalling.VoipAppUpdateActivity" excludeFromRecents="true" launchMode="1" configChanges="0xff0" windowSoftInputMode="0x11"/>
+    <activity theme="Theme.App.CallSpam" name="com.whatsapp.voipcalling.CallSpamActivity" launchMode="1" configChanges="0xff0" windowSoftInputMode="0x1"/>
+    <activity theme="Theme.App.RequestPermission" name="com.whatsapp.RequestPermissionActivity" launchMode="1" configChanges="0xff0" windowSoftInputMode="0x23"/>
+    <activity theme="Theme.App.RequestPermission" name="com.whatsapp.registration.directmigration.RequestPermissionFromSisterAppActivity" launchMode="1" configChanges="0xff0" windowSoftInputMode="0x23"/>
+    <activity theme="Theme.App.White.NoActionBar" name="com.whatsapp.backup.google.RestoreFromBackupActivity" launchMode="1" configChanges="0xfb0" windowSoftInputMode="0x23"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.backup.google.GoogleDriveNewUserSetupActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.corruptinstallation.CorruptInstallationActivity" launchMode="3"/>
+    <activity theme="Theme.App" name="com.whatsapp.insufficientstoragespace.InsufficientStorageSpaceActivity" launchMode="1"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.spamwarning.SpamWarningActivity" launchMode="1" screenOrientation="1" configChanges="0x4a0"/>
+    <activity theme="Theme.App.QrScanner" name="com.whatsapp.qrcode.DevicePairQrScannerActivity" screenOrientation="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.companiondevice.PairedDevicesActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.companiondevice.LinkedDevicesActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Gray" name="com.whatsapp.companiondevice.optin.ui.OptInActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.Translucent" name="com.whatsapp.VoiceMessagingActivity" taskAffinity=":voice" showOnLockScreen="true" showForAllUsers="true" showWhenLocked="true">
+      <intent-filter>
+        <action name="com.google.android.voicesearch.SEND_MESSAGE_TO_CONTACTS"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data mimeType="text/plain"/>
+        <data mimeType="audio/wav"/>
+      </intent-filter>
+    </activity>
+    <activity theme="Theme.App" name="com.whatsapp.identity.IdentityVerificationActivity" launchMode="1" configChanges="0xfb0">
+      <intent-filter label="Verify security code">
+        <action name="android.nfc.action.NDEF_DISCOVERED"/>
+        <category name="android.intent.category.DEFAULT"/>
+        <data mimeType="application/com.whatsapp.identity"/>
+      </intent-filter>
+    </activity>
+    <activity theme="Theme.App.NoActionBar" label="" name="com.whatsapp.tos.TosUpdateActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.WallpaperPreview" name="com.whatsapp.settings.chat.wallpaper.GalleryWallpaperPreview" screenOrientation="1"/>
+    <activity name="com.whatsapp.shareinvitelink.ShareInviteLinkActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.Translucent.Dimmed" name="com.whatsapp.invites.ViewGroupInviteActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.Translucent.Dimmed" name="com.whatsapp.invites.InviteGroupParticipantsActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.Translucent.Dimmed" name="com.whatsapp.acceptinvitelink.AcceptInviteLinkActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity theme="Theme.Translucent.Dimmed" name="com.whatsapp.qrcode.contactqr.QrSheetDeepLinkActivity" launchMode="1" configChanges="0xfb0"/>
+    <activity name="com.whatsapp.writenfctag.WriteNfcTagActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.group.GroupAddPrivacyActivity" configChanges="0xdb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.group.GroupAddBlacklistPickerActivity" configChanges="0xdb0"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.status.StatusPrivacyActivity" configChanges="0xdb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.status.StatusRecipientsActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.StatusPlayback" name="com.whatsapp.status.playback.StatusPlaybackActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.status.playback.StatusReplyActivity" launchMode="1" configChanges="0xfb0" windowSoftInputMode="0x5"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.status.playback.MyStatusesActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.location.LiveLocationPrivacyActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.MediaAlbum" name="com.whatsapp.conversation.conversationrow.album.MediaAlbumActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.status.playback.MessageReplyActivity" configChanges="0xfb0" windowSoftInputMode="0x1"/>
+    <activity theme="Theme.App.Black" name="com.whatsapp.gifvideopreview.GifVideoPreviewActivity" windowSoftInputMode="0x1"/>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.voipcalling.VoipPermissionsActivity"/>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.stickers.AddThirdPartyStickerPackActivity" configChanges="0xfb0">
+      <intent-filter>
+        <action name="com.whatsapp.intent.action.ENABLE_STICKER_PACK"/>
+        <category name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.audiopicker.AudioPickerActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.WaInAppBrowsingActivity" exported="false" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.qrcode.AuthenticationActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.authentication.AppAuthenticationActivity" launchMode="2" configChanges="0xfb0">
+      <intent-filter>
+        <action name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+      </intent-filter>
+    </activity>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.qrcode.contactqr.ContactQrActivity" screenOrientation="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.qrcode.GroupLinkQrActivity" screenOrientation="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.backup.encryptedbackup.EncBackupMainActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Settings.DayNight" name="com.whatsapp.blockinguserinteraction.BlockingUserInteractionActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.Translucent" name="com.whatsapp.conversation.conversationrow.ContactSyncActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.biz.product.view.activity.ProductDetailActivity" taskAffinity="com.whatsapp.biz.product.view.activity.CatalogDetailActivity" screenOrientation="1" configChanges="0xfb0"/>
+    <activity theme="Theme.App" name="com.whatsapp.biz.collection.view.activity.CollectionProductListActivity" configChanges="0xfb0"/>
+    <activity theme="Theme.App.NoActionBar" name="com.whatsapp.ephemeral.ChangeEphemeralSettingActivity" configChanges="0xd30"/>
+    <receiver name="com.whatsapp.BootReceiver" enabled="true">
+      <intent-filter>
+        <action name="android.intent.action.BOOT_COMPLETED"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="com.whatsapp.UpdatedOurAppReceiver" enabled="true">
+      <intent-filter>
+        <action name="android.intent.action.MY_PACKAGE_REPLACED"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="com.whatsapp.ExternalMediaManager$ExternalMediaStateReceiver">
+      <intent-filter>
+        <action name="android.intent.action.MEDIA_BAD_REMOVAL"/>
+        <action name="android.intent.action.MEDIA_EJECT"/>
+        <action name="android.intent.action.MEDIA_MOUNTED"/>
+        <action name="android.intent.action.MEDIA_REMOVED"/>
+        <action name="android.intent.action.MEDIA_SHARED"/>
+        <action name="android.intent.action.MEDIA_UNMOUNTED"/>
+        <data scheme="file"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="com.whatsapp.appwidget.WidgetProvider" enabled="true">
+      <intent-filter>
+        <action name="android.appwidget.action.APPWIDGET_UPDATE"/>
+      </intent-filter>
+      <meta-data name="android.appwidget.provider" resource="widget_info"/>
+    </receiver>
+    <receiver name="com.whatsapp.notification.MessageNotificationDismissedReceiver" exported="false"/>
+    <receiver name="com.whatsapp.notification.MissedCallNotificationDismissedReceiver" exported="false"/>
+    <receiver name="com.whatsapp.AlarmBroadcastReceiver" permission="com.whatsapp.permission.BROADCAST" exported="true"/>
+    <receiver name="com.whatsapp.location.FinalLiveLocationBroadcastReceiver" exported="false"/>
+    <receiver name="com.whatsapp.web.WebSessionVerificationReceiver" exported="false"/>
+    <receiver name="com.whatsapp.companiondevice.CompanionDeviceVerificationReceiver" exported="false"/>
+    <receiver name="com.whatsapp.registration.RegistrationCompletedReceiver" permission="com.whatsapp.permission.REGISTRATION">
+      <intent-filter>
+        <action name="com.whatsapp.SMBRegistrationCompleted"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="com.whatsapp.registration.directmigration.MigrationProviderOrderedBroadcastReceiver" permission="com.whatsapp.permission.REGISTRATION">
+      <intent-filter>
+        <action name="com.whatsapp.registration.directmigration.initialMigrationInfoAction"/>
+        <action name="com.whatsapp.registration.directmigration.recoveryTokenAction"/>
+        <action name="com.whatsapp.registration.directmigration.setMigrationStateOnProviderSide"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="com.whatsapp.registration.directmigration.MigrationRequesterBroadcastReceiver" permission="com.whatsapp.permission.REGISTRATION">
+      <intent-filter>
+        <action name="com.whatsapp.registration.directmigration.providerIsLoggedOutAction"/>
+        <action name="com.whatsapp.registration.directmigration.providerAppMigrationSpaceNeededAction"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="com.whatsapp.registration.PreRegNotificationLearnMoreReceiver" exported="false"/>
+    <receiver name="com.whatsapp.registration.RegRetryVerificationReceiver" exported="false">
+      <intent-filter>
+        <action name="com.whatsapp.alarm.REGISTRATION_RETRY"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="com.whatsapp.accounttransfer.AccountTransferReceiver" enabled="true" exported="true">
+      <intent-filter>
+        <action name="com.google.android.gms.auth.START_ACCOUNT_EXPORT"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="com.whatsapp.TellAFriendReceiver" exported="false"/>
+    <receiver name="com.whatsapp.push.WAFbnsPreloadReceiver" exported="true">
+      <intent-filter>
+        <category name="com.whatsapp"/>
+        <action name="com.facebook.rti.fbns.intent.RECEIVE"/>
+      </intent-filter>
+    </receiver>
+    <provider name="com.whatsapp.contentprovider.MediaProvider" exported="false" authorities="com.whatsapp.provider.media" grantUriPermissions="true"/>
+    <provider name="com.whatsapp.registration.directmigration.MigrationContentProvider" readPermission="com.whatsapp.permission.MIGRATION_CONTENT_PROVIDER" enabled="true" exported="true" authorities="com.whatsapp.provider.MigrationContentProvider" grantUriPermissions="false"/>
+    <provider name="androidx.core.content.FileProvider" exported="false" authorities="com.whatsapp.fileprovider" grantUriPermissions="true">
+      <meta-data name="android.support.FILE_PROVIDER_PATHS" resource="file_paths"/>
+    </provider>
+    <provider name="com.whatsapp.stickers.WhitelistPackQueryContentProvider" exported="true" authorities="com.whatsapp.provider.sticker_whitelist_check"/>
+    <service name="com.whatsapp.util.crash.ExceptionsUploadService" permission="android.permission.BIND_JOB_SERVICE"/>
+    <service name="com.whatsapp.perf.ProfiloUploadService" permission="android.permission.BIND_JOB_SERVICE"/>
+    <service name="com.whatsapp.messaging.MessageService"/>
+    <service name="com.whatsapp.ExternalMediaManager" permission="android.permission.BIND_JOB_SERVICE"/>
+    <service name="com.whatsapp.contact.sync.ContactsSyncAdapterService" exported="true">
+      <intent-filter>
+        <action name="android.content.SyncAdapter"/>
+      </intent-filter>
+      <meta-data name="android.content.SyncAdapter" resource="sync_contacts"/>
+      <meta-data name="android.provider.CONTACTS_STRUCTURE" resource="contacts"/>
+    </service>
+    <service name="com.whatsapp.media.transcode.MediaTranscodeService"/>
+    <service name="com.whatsapp.location.LocationSharingService" foregroundServiceType="0x8"/>
+    <service name="com.whatsapp.voipcalling.SelfManagedConnectionService" permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE">
+      <intent-filter>
+        <action name="android.telecom.ConnectionService"/>
+      </intent-filter>
+    </service>
+    <service name="com.whatsapp.voipcalling.VoiceFGService" foregroundServiceType="0xc0"/>
+    <service name="com.whatsapp.service.BackgroundMediaControlService"/>
+    <service name="com.whatsapp.notification.AndroidWear"/>
+    <service name="com.whatsapp.backup.google.GoogleBackupService"/>
+    <service name="com.whatsapp.VoiceMessagingService"/>
+    <service name="com.whatsapp.AlarmService" permission="android.permission.BIND_JOB_SERVICE"/>
+    <service name="com.whatsapp.appwidget.WidgetService" permission="android.permission.BIND_REMOTEVIEWS"/>
+    <service name="com.whatsapp.service.WebClientService"/>
+    <service name="com.whatsapp.service.MDSyncService"/>
+    <service name="com.whatsapp.push.GcmListenerService" exported="false">
+      <intent-filter>
+        <action name="com.google.firebase.MESSAGING_EVENT"/>
+      </intent-filter>
+    </service>
+    <service name="com.whatsapp.push.RegistrationIntentService" permission="android.permission.BIND_JOB_SERVICE"/>
+    <service name="com.whatsapp.notification.DirectReplyService"/>
+    <service name="com.whatsapp.service.GcmFGService"/>
+    <service name="com.whatsapp.data.ConversationDeleteService" exported="false"/>
+    <service name="com.whatsapp.service.UnsentMessagesNetworkAvailableJob" permission="android.permission.BIND_JOB_SERVICE"/>
+    <receiver name="com.whatsapp.schedulers.alarm.SchedulerExperimentAlarmReceiver"/>
+    <service name="com.whatsapp.schedulers.alarm.SchedulerExperimentAlarmService" permission="android.permission.BIND_JOB_SERVICE"/>
+    <service name="com.whatsapp.schedulers.job.SchedulerExperimentJobService" permission="android.permission.BIND_JOB_SERVICE"/>
+    <receiver name="com.whatsapp.phoneid.PhoneIdRequestReceiver">
+      <intent-filter>
+        <action name="com.facebook.GET_PHONE_ID"/>
+      </intent-filter>
+    </receiver>
+    <service name="androidx.work.impl.background.systemalarm.SystemAlarmService" enabled="false" exported="false" directBootAware="false"/>
+    <service name="androidx.work.impl.background.systemjob.SystemJobService" permission="android.permission.BIND_JOB_SERVICE" enabled="true" exported="true" directBootAware="false"/>
+    <service name="androidx.work.impl.foreground.SystemForegroundService" enabled="true" exported="false" directBootAware="false"/>
+    <receiver name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver" enabled="true" exported="false" directBootAware="false"/>
+    <receiver name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy" enabled="false" exported="false" directBootAware="false">
+      <intent-filter>
+        <action name="android.intent.action.ACTION_POWER_CONNECTED"/>
+        <action name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy" enabled="false" exported="false" directBootAware="false">
+      <intent-filter>
+        <action name="android.intent.action.BATTERY_OKAY"/>
+        <action name="android.intent.action.BATTERY_LOW"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy" enabled="false" exported="false" directBootAware="false">
+      <intent-filter>
+        <action name="android.intent.action.DEVICE_STORAGE_LOW"/>
+        <action name="android.intent.action.DEVICE_STORAGE_OK"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy" enabled="false" exported="false" directBootAware="false">
+      <intent-filter>
+        <action name="android.net.conn.CONNECTIVITY_CHANGE"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="androidx.work.impl.background.systemalarm.RescheduleReceiver" enabled="false" exported="false" directBootAware="false">
+      <intent-filter>
+        <action name="android.intent.action.BOOT_COMPLETED"/>
+        <action name="android.intent.action.TIME_SET"/>
+        <action name="android.intent.action.TIMEZONE_CHANGED"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver" enabled="false" exported="false" directBootAware="false">
+      <intent-filter>
+        <action name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+      </intent-filter>
+    </receiver>
+    <receiver name="androidx.work.impl.diagnostics.DiagnosticsReceiver" permission="android.permission.DUMP" enabled="true" exported="true" directBootAware="false">
+      <intent-filter>
+        <action name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS"/>
+      </intent-filter>
+    </receiver>
+    <activity theme="Theme.Translucent.NoTitleBar" name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" exported="false" excludeFromRecents="true"/>
+    <service name="com.google.android.gms.auth.api.signin.RevocationBoundService" permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" exported="true"/>
+    <receiver name="com.google.android.gms.analytics.AnalyticsReceiver" enabled="true" exported="false"/>
+    <service name="com.google.android.gms.analytics.AnalyticsService" enabled="true" exported="false"/>
+    <service name="com.google.android.gms.analytics.AnalyticsJobService" permission="android.permission.BIND_JOB_SERVICE" enabled="true" exported="false"/>
+    <service name="com.google.firebase.messaging.FirebaseMessagingService" exported="false">
+      <intent-filter priority="-500">
+        <action name="com.google.firebase.MESSAGING_EVENT"/>
+      </intent-filter>
+    </service>
+    <service name="com.google.firebase.components.ComponentDiscoveryService" exported="false">
+      <meta-data name="com.google.firebase.components:com.google.firebase.iid.Registrar" value="com.google.firebase.components.ComponentRegistrar"/>
+    </service>
+    <receiver name="com.google.firebase.iid.FirebaseInstanceIdReceiver" permission="com.google.android.c2dm.permission.SEND" exported="true">
+      <intent-filter>
+        <action name="com.google.android.c2dm.intent.RECEIVE"/>
+      </intent-filter>
+    </receiver>
+    <service name="com.google.firebase.iid.FirebaseInstanceIdService" exported="true">
+      <intent-filter priority="-500">
+        <action name="com.google.firebase.INSTANCE_ID_EVENT"/>
+      </intent-filter>
+    </service>
+    <activity theme="Theme.Translucent.NoTitleBar" name="com.google.android.gms.common.api.GoogleApiActivity" exported="false"/>
+    <service name="androidx.sharetarget.ChooserTargetServiceCompat" permission="android.permission.BIND_CHOOSER_TARGET_SERVICE">
+      <intent-filter>
+        <action name="android.service.chooser.ChooserTargetService"/>
+      </intent-filter>
+    </service>
+    <provider name="com.google.firebase.provider.FirebaseInitProvider" exported="false" authorities="com.whatsapp.firebaseinitprovider" initOrder="100"/>
+    <service name="androidx.room.MultiInstanceInvalidationService" exported="false" directBootAware="true"/>
+    <provider name="androidx.lifecycle.ProcessLifecycleOwnerInitializer" exported="false" multiprocess="true" authorities="com.whatsapp.lifecycle-process"/>
+  </application>
+</manifest>

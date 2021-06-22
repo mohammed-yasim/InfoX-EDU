@@ -6,7 +6,8 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role
     "username" => $_POST['username'],
     "password" => $_POST['password']
   ];
-  $curl = curl_init('https://console.nooneducare.in/' . $_POST['role'] . '/login');
+  $curl = curl_init('http://192.168.43.199:3001/' . $_POST['role'] . '/login');
+  //https://console.nooneducare.in/
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($curl, CURLOPT_POST, true);
   curl_setopt($curl, CURLOPT_POSTFIELDS,  json_encode($data));
