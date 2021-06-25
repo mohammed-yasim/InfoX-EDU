@@ -6,7 +6,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role
     "username" => $_POST['username'],
     "password" => $_POST['password']
   ];
-  $curl = curl_init('http://192.168.43.199:3001/' . $_POST['role'] . '/login');
+  $curl = curl_init('https://console.nooneducare.in/' . $_POST['role'] . '/login');
   //https://console.nooneducare.in/
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($curl, CURLOPT_POST, true);
@@ -22,7 +22,6 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role
   if ($response['status'] == 1) {
     $_SESSION['_token'] = $response['data']['token'];
     $_SESSION['_role'] =  $_POST['role'];
-    $_SESSION['_name'] = $response['data']['user']['name'];
     $_SESSION['_name'] = $response['data']['user']['name'];
     $_SESSION['_institution'] = $response['data']['user']['institution'];
     if (isset($_POST['test']) && $_POST['test'] == '1') {

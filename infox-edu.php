@@ -349,7 +349,7 @@ desired effect
             <?php if (file_exists(INFOX_PATH . $_SERVER['REQUEST_URI'] . '.php')) {
                 include(INFOX_PATH . $_SERVER['REQUEST_URI'] . '.php');
             } else { ?>
-            <h1>Error - Could Not Find The Module</h1>
+            <h1>Error - Could Not Find The Module <?php echo(INFOX_PATH . $_SERVER['REQUEST_URI'] . '.php') ?></h1>
             <?php } ?>
         </div>
 

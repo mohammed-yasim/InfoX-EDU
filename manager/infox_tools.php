@@ -20,7 +20,7 @@
         form_submit = (e) => {
             e.preventDefault();
             let data = $('#link-gerenarator-form').serializeObject();
-            axios.post('/infox/link-generator',data).then((response)=>{
+            axios.post('/infox/create?tool=link',data).then((response)=>{
                 $('#link-gerenarator-form')[0].reset();
             })
         }
