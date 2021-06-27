@@ -1,5 +1,5 @@
 <?php 
-define('INFOX',  TRUE); // used to protect includes
+define('INFOX',  TRUE);
 session_start();
 if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role'])) {
   $data = [

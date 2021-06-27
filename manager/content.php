@@ -416,7 +416,6 @@ class ContentManager extends React.Component {
                                                         <table className="table table-hover table-striped">
                                                             <thead>
                                                                 <tr>
-                                                                    <th></th>
                                                                     <th>Title &amp; Description</th>
                                                                     <th>Status</th>
 
@@ -429,10 +428,9 @@ class ContentManager extends React.Component {
                                                                 ).map(data_set => {
                                                                     return (
                                                                         <tr>
-                                                                            <th></th>
                                                                             <td>
                                                                                 {data_set.u_title}<br />
-                                                                                <p style={{overflow:'hidden',textOverflow: 'ellipsis',whiteSpace: 'nowrap',width:'350px',height:'50px'}}>{data_set.u_desc}</p></td>
+                                                                                <p style={{overflow:'hidden',textOverflow: 'ellipsis',whiteSpace: 'nowrap',width:'350px',height:'auto'}}>{data_set.u_desc}</p></td>
                                                                             <td style={{ fontSize: '80%' }}>
                                                                                 <div>
                                                                                     {data_set.published === 0 ? <label>DRAFT</label> : <span>

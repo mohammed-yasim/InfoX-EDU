@@ -346,10 +346,16 @@ desired effect
         <div class="content-wrapper">
             <div id="infox">
             </div>
-            <?php if (file_exists(INFOX_PATH . $_SERVER['REQUEST_URI'] . '.php')) {
-                include(INFOX_PATH . $_SERVER['REQUEST_URI'] . '.php');
+            <?php
+            if($_SERVER['REQUEST_URI']=='/'){
+                $REQUEST_URI = '/dashboard';
+            }else{
+                $REQUEST_URI = $_SERVER['REQUEST_URI'];
+            }
+            if (file_exists(INFOX_PATH . $REQUEST_URI . '.php')) {
+                include(INFOX_PATH . $REQUEST_URI . '.php');
             } else { ?>
-            <h1>Error - Could Not Find The Module <?php echo(INFOX_PATH . $_SERVER['REQUEST_URI'] . '.php') ?></h1>
+            <h1>Error - Could Not Find The Module <?php echo(INFOX_PATH . $REQUEST_URI . '.php') ?></h1>
             <?php } ?>
         </div>
 

@@ -1,1 +1,1 @@
-<?php include('/../manager/content.php'); ?>
+<?php include(__DIR__.'/../manager/content.php'); ?>
