@@ -110,9 +110,9 @@
                   </div>
                 </div>
                 <div className="form-group">
-                  <label  className="col-sm-2 control-label">Url</label>
+                  <label  className="col-sm-2 control-label">Expiry_date</label>
                   <div className="col-sm-10">
-                    <input type="datetime-local" className="form-control"  placeholder="url"  required name="date"/>
+                    <input type="datetime-local" className="form-control"  placeholder="Expiry_date"  required name="date"/>
                   </div>
                 </div>
               </div>

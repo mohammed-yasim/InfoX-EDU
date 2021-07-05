@@ -177,7 +177,7 @@ class ContentManager extends React.Component {
 
                                 {
                                     this.state.data_subjects.length > 0 && this.state.editor_method === 'add' ?
-                                        <div className="col-xs-12 mb-10">
+                                        <div className="mb-10">
                                             <select className="form-control" value={this.state.editor_subject} onChange={this.editor_subject_handle.bind(this)}>
                                                 <option value={''} selelected>Choose Subject</option>
                                                 {this.state.data_subjects.map(subject => {
@@ -187,7 +187,7 @@ class ContentManager extends React.Component {
                                                 })}
                                             </select>
                                         </div> : null
-                                }   
+                                }
                                 {this.state.editor_method === 'add' ?
                                 <form id="editor_form" onSubmit={this.editor_submit}>
                                     <div className="row">
@@ -346,8 +346,7 @@ class ContentManager extends React.Component {
                                             </div>
                                         </div>
                                     }
-                                    {
-                                        this.state.data_content.length > 0 && this.state.input_course_select !== '' ?
+                                    {this.state.input_course_select !== '' ?
                                         <div>
                                             <div className="box box-solid">
                                                 <div className="box-header with-border">
