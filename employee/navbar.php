@@ -8,6 +8,7 @@
             <!-- Optionally, you can add icons to the links -->
             <li><a href="/dashboard"><i class="fa fa-dashboard text-danger"></i> <span>Dashboard</span></a></li>
             <li><a href="/content"><i class="fa fa-circle-o text-aqua"></i> <span>Contents</span></a></li>
+            <li><a href="/googledrive"><i class="fa fa-cloud text-aqua"></i> <span>Cloud Storage</span></a></li>
             <li><a href="/link"><i class="fa fa-link text-aqua"></i> <span>Link Generator</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->

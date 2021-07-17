@@ -101,7 +101,7 @@
                                 <div className="form-group">
                                     <label>Target Url</label>
                                     <input className="form-control" type="text" pattern="https?://.+"
-                                        title="Include http://" name="u_blob" required />
+                                        title="Include https://" name="u_blob" required />
                                 </div>
                                 <div className="form-group">
                                     <label>Publish on</label>

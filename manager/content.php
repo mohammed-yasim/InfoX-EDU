@@ -372,24 +372,7 @@ class ContentManager extends React.Component {
                                                 </div>
 
                                             </div> 
-                                            <div className="box box-solid">
-                                                <div className="box-header with-border">
-                                                    <h3 className="box-title">Filter</h3>
-                                                    <div className="box-tools">
-                                                        <button type="button" className="btn btn-box-tool" data-widget="collapse"><i className="fa fa-minus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div className="box-body no-padding">
-                                                    <ul className="nav nav-pills nav-stacked">
-                                                        <li className="active"><a><i className="fa fa-check text-blue"></i> All</a></li>
-                                                        <li><a><i className="fa fa-file text-blue"></i> Draft</a></li>
-                                                        <li><a><i className="fa fa-newspaper-o text-green"></i> Published</a></li>
-                                                        <li><a><i className="fa fa-trash text-light-red"></i> Trash</a></li>
-                                                    </ul>
-                                                </div>
-
-                                            </div>
+                                            
                                             </div>: null
                                     }
 
@@ -512,3 +495,23 @@ function App() {
 }
 ReactDOM.render(<App />, rootElement);
 </script>
+<!-----
+<div className="box box-solid">
+                                                <div className="box-header with-border">
+                                                    <h3 className="box-title">Filter</h3>
+                                                    <div className="box-tools">
+                                                        <button type="button" className="btn btn-box-tool" data-widget="collapse"><i className="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div className="box-body no-padding">
+                                                    <ul className="nav nav-pills nav-stacked">
+                                                        <li className="active"><a><i className="fa fa-check text-blue"></i> All</a></li>
+                                                        <li><a><i className="fa fa-file text-blue"></i> Draft</a></li>
+                                                        <li><a><i className="fa fa-newspaper-o text-green"></i> Published</a></li>
+                                                        <li><a><i className="fa fa-trash text-light-red"></i> Trash</a></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        ---->

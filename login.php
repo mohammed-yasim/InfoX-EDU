@@ -45,9 +45,7 @@
 <body class="hold-transition login-page mybody" style="">
     <div class="login-box">
         <div class="login-box-body" style="    box-shadow: 0 0px 10px rgba(0,0,0,0.30), 0 0px 10px rgba(0,0,0,0.22);">
-        <h3 class="text-center"><a><b>InfoX-EDU</b> 0.2</a></h3>
-        	
-<a href="http://torrent.azba.in/24a60b5ccf43d214a7a79bc13fa85b11">Click this link to launch you app from web</a>
+        <h3 class="text-center"><a><b>InfoX-EDU</b> 1.0</a></h3>
             <p class="login-box-msg text-danger"><?php if (isset($response['message'])) {
                                                     echo $response['message'];
                                                 }else{echo("Sign in to start your session");} ?></p>

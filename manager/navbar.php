@@ -23,6 +23,7 @@
             </li>
             <li><a href="/content"><i class="fa fa-circle-o text-aqua"></i> <span>Content</span></a></li>
             <li><a href="/infox_tools"><i class="fa fa-cogs text-aqua"></i> <span>Infox Tools</span></a></li>
+            <li><a href="/googledrive"><i class="fa fa-cloud text-aqua"></i> <span>Cloud Storage</span></a></li>
             <li><a href="/media"><i class="fa fa-headphones text-aqua text-xs"></i><span><i class="fa fa-video-camera text-aqua"></i> Media</span></a></li>
             <li><a href="/user-performance"><i class="fa fa-trophy text-aqua"></i> <span>U-Performance</span></a></li>
             <li><a href="/user-log"><i class="fa fa-list-alt text-aqua"></i> <span>U-Log</span></a></li>
