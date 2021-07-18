@@ -44,6 +44,11 @@ submit = (e) => {
     }
     console.log(this.state.selectedFile);
     data.append('file', this.state.selectedFile)
+  try {
+    navigator.wakeLock.request('screen');
+  } catch (err) {
+    console.log(`${err.name}, ${err.message}`);
+  }
     axios.post('cloudstorage/video', data, config)
         .then(res => {
             this.setState({ videouploader: null });
@@ -201,9 +206,9 @@ class AudioRecorder extends React.Component {
             console.log(e);
             if (this.recorder.state == "inactive") {
                 this.audio_blob = new Blob(this.audio_chunks, {
-                    type: 'audio/mpeg-3'
+                    type: 'audio/wav'
                 });
-                this.audio_form_data.append("file", this.audio_blob, new Date().toString());
+                this.audio_form_data.append("file", this.audio_blob, `${new Date().toString()}.wav`);
                 this.audio_source = URL.createObjectURL(this.audio_blob);
                 this.upload();
             }
