@@ -6,8 +6,8 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role
     "username" => $_POST['username'],
     "password" => $_POST['password']
   ];
-  $curl = curl_init('https://console.nooneducare.in/' . $_POST['role'] . '/login');
-  //https://console.nooneducare.in/
+  $curl = curl_init('https://demo.azba.in/' . $_POST['role'] . '/login');
+  //https://demo.azba.in/
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($curl, CURLOPT_POST, true);
   curl_setopt($curl, CURLOPT_POSTFIELDS,  json_encode($data));
@@ -44,7 +44,7 @@ if (isset($_SESSION["_token"])) {
   if (isset($_SESSION["_test"])) {
     define('INFOX_CONSOLE_URL', 'http://192.168.43.199:3001/' . INFOX_PATH);
   } else {
-    define('INFOX_CONSOLE_URL', 'https://console.nooneducare.in/' . INFOX_PATH);
+    define('INFOX_CONSOLE_URL', 'https://demo.azba.in/' . INFOX_PATH);
   }
   include('infox-edu.php');
 } else {
