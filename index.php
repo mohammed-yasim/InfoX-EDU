@@ -48,5 +48,5 @@ if (isset($_SESSION["_token"])) {
   }
   include('infox-edu.php');
 } else {
-  include('login.php');
+  include('login.php?e='.$error);
 }
